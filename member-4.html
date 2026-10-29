@@ -4,128 +4,195 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Muhammad Zuhairi bin Mohd Ridhuan | Hairi</title>
-<meta name="description" content="Zuhairi (hairi) is a Computer Network and Security student and aspiring red team operator at NSA." />
+<meta name="description" content="Zuhairi (Hairi) is a Computer Network and Security student and aspiring red team operator at NSA." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 <style>
-  :root { --bg:#07060d; --card:#100d1a; --border:#2a2140; --text:#e8e4f5; --muted:#9a90b8; --accent:#ff2d55; --accent-rgb:255,45,85; }
+  :root { --bg:#07060d; --bg-card:#100d1a; --border:#2a2140; --text:#e8e4f5; --muted:#9a90b8; --green:#2dff9a; --accent:#ff2d55; --accent-rgb:255,45,85; }
   [data-theme="violet"] { --accent:#a855f7; --accent-rgb:168,85,247; }
   [data-theme="green"]  { --accent:#2dff9a; --accent-rgb:45,255,154; }
   * { box-sizing:border-box; margin:0; }
   body { background:var(--bg); color:var(--text); font-family:'Share Tech Mono',ui-monospace,Consolas,monospace; line-height:1.7; min-height:100vh; }
-  #rain { position:fixed; inset:0; width:100%; height:100%; z-index:0; opacity:.14; pointer-events:none; }
-  .wrap { position:relative; z-index:1; max-width:820px; margin:0 auto; padding:28px 20px 64px; }
   a { color:var(--accent); }
   :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+  #rain { position:fixed; inset:0; width:100%; height:100%; z-index:0; opacity:.14; pointer-events:none; }
+  .scanlines { position:fixed; inset:0; z-index:2; pointer-events:none; background:repeating-linear-gradient(to bottom, rgba(255,255,255,.025) 0 1px, transparent 1px 3px); }
 
-  .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:36px; font-size:.85rem; }
-  .topbar a { text-decoration:none; color:var(--muted); }
-  .topbar a:hover { color:var(--accent); }
-  .themes { display:flex; gap:8px; align-items:center; color:var(--muted); }
-  .themes button { width:22px; height:22px; border-radius:50%; border:2px solid var(--border); cursor:pointer; }
+  .page-wrapper { position:relative; z-index:1; display:grid; grid-template-columns:250px 1fr; min-height:100vh; }
+
+  /* Sidebar */
+  .sidebar { position:sticky; top:0; height:100vh; overflow-y:auto; background:rgba(16,13,26,.92); border-right:1px solid var(--border); display:flex; flex-direction:column; }
+  .sidebar-logo { padding:24px 20px 14px; text-align:center; }
+  .logo-icon { font-size:2rem; }
+  .sidebar-logo h1 { font-family:'Orbitron',sans-serif; font-size:1.2rem; letter-spacing:4px; color:var(--accent); text-shadow:0 0 14px rgba(var(--accent-rgb),.5); }
+  .tagline { font-size:.62rem; color:var(--muted); letter-spacing:2px; }
+  .sidebar-status { margin:0 20px 14px; font-size:.65rem; color:var(--muted); letter-spacing:1px; }
+  .status-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 8px var(--green); margin-right:8px; animation:pulse 2s infinite; }
+  @keyframes pulse { 50%{opacity:.35} }
+  .sidebar-nav { flex:1; padding:0 10px; }
+  .nav-section-label { font-size:.6rem; color:var(--muted); letter-spacing:2px; margin:14px 10px 6px; }
+  .nav-link { display:flex; align-items:center; gap:10px; padding:7px 12px; border-radius:3px; color:var(--muted); text-decoration:none; font-size:.8rem; border-left:2px solid transparent; }
+  .nav-link:hover { color:var(--text); background:rgba(var(--accent-rgb),.06); }
+  .nav-link.active { color:var(--accent); background:rgba(var(--accent-rgb),.1); border-left-color:var(--accent); }
+  .nav-link.sub { padding-left:36px; font-size:.7rem; }
+  .nav-badge { margin-left:auto; font-size:.6rem; padding:1px 7px; border-radius:8px; background:rgba(var(--accent-rgb),.15); color:var(--accent); }
+  .themes { display:flex; gap:8px; align-items:center; color:var(--muted); font-size:.7rem; padding:12px 22px 0; }
+  .themes button { width:20px; height:20px; border-radius:50%; border:2px solid var(--border); cursor:pointer; }
   .themes button[aria-pressed="true"] { border-color:var(--text); }
+  .sidebar-footer { padding:14px 22px 20px; font-size:.65rem; color:var(--muted); border-top:1px solid var(--border); margin-top:14px; }
 
-  .hero { display:grid; grid-template-columns:180px 1fr; gap:28px; align-items:center; padding:28px; background:var(--card); border:1px solid rgba(var(--accent-rgb),.35); border-radius:6px; box-shadow:0 0 40px rgba(var(--accent-rgb),.12); }
-  .hero img { width:180px; height:180px; object-fit:cover; border-radius:50%; border:2px solid var(--accent); box-shadow:0 0 30px rgba(var(--accent-rgb),.35); background:#1a1528; cursor:pointer; }
-  h1 { font-family:'Orbitron',sans-serif; font-weight:800; font-size:clamp(1.8rem,5vw,2.6rem); color:var(--accent); text-shadow:0 0 18px rgba(var(--accent-rgb),.45); letter-spacing:2px; }
-  h1.glitch { animation:glitch .35s steps(2) 1; }
+  /* Main */
+  .main-content { padding:32px 36px 64px; max-width:900px; width:100%; }
+  .breadcrumb { font-size:.65rem; letter-spacing:2px; color:var(--muted); }
+  .page-header h2 { font-family:'Orbitron',sans-serif; font-weight:800; font-size:clamp(1.8rem,4vw,2.4rem); color:var(--accent); text-shadow:0 0 20px rgba(var(--accent-rgb),.4); letter-spacing:2px; margin:4px 0; }
+  .page-header h2.glitch { animation:glitch .35s steps(2) 1; }
   @keyframes glitch { 0%{transform:translate(2px,0);filter:hue-rotate(60deg)} 50%{transform:translate(-3px,1px)} 100%{transform:none} }
-  .role { color:var(--accent); margin:2px 0 12px; }
+  .subtitle { color:var(--muted); font-size:.85rem; margin-bottom:24px; }
+
+  .member-hero { display:grid; grid-template-columns:180px 1fr; gap:28px; align-items:center; padding:28px; background:var(--bg-card); border:1px solid rgba(var(--accent-rgb),.3); border-radius:6px; box-shadow:0 0 40px rgba(var(--accent-rgb),.1); }
+  .avatar { position:relative; width:180px; height:180px; }
+  .avatar img { width:100%; height:100%; object-fit:cover; border-radius:50%; border:2px solid var(--accent); box-shadow:0 0 40px rgba(var(--accent-rgb),.3); background:#1a1528; cursor:pointer; }
+  .avatar::after { content:''; position:absolute; inset:-10px; border-radius:50%; border:1px solid rgba(var(--accent-rgb),.3); pointer-events:none; }
+  .codename { font-size:.7rem; letter-spacing:2px; color:var(--accent); }
+  .member-hero h3 { font-family:'Orbitron',sans-serif; font-size:1.6rem; letter-spacing:2px; }
+  .role { color:var(--accent); margin-bottom:10px; }
   .typed::after { content:'▌'; margin-left:2px; animation:blink 1s steps(1) infinite; }
   @keyframes blink { 50%{opacity:0} }
-  .bio { color:var(--muted); max-width:56ch; }
+  .bio { color:var(--muted); max-width:56ch; margin-bottom:14px; min-height:3.4em; }
 
-  h2 { font-family:'Orbitron',sans-serif; font-size:1rem; letter-spacing:2px; margin:40px 0 14px; color:var(--text); }
-  .facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
-  .fact { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:12px 14px; }
-  .fact span { display:block; color:var(--muted); font-size:.8rem; }
-  .badges { display:flex; flex-wrap:wrap; gap:8px; }
-  .badge { padding:5px 13px; border:1px solid rgba(var(--accent-rgb),.35); background:rgba(var(--accent-rgb),.08); color:var(--accent); border-radius:2px; font-size:.85rem; }
+  .section-title { font-family:'Orbitron',sans-serif; font-size:.95rem; letter-spacing:3px; margin:38px 0 14px; padding-left:12px; border-left:3px solid var(--accent); }
+  .card { background:var(--bg-card); border:1px solid var(--border); border-radius:4px; padding:16px 18px; }
+  .facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:12px; }
+  .facts .card span { display:block; color:var(--muted); font-size:.75rem; }
+  .skills-list { display:flex; flex-wrap:wrap; gap:8px; }
+  .skill-badge-red { font-size:.75rem; padding:4px 12px; background:rgba(var(--accent-rgb),.08); border:1px solid rgba(var(--accent-rgb),.3); border-radius:2px; color:var(--accent); letter-spacing:1px; }
 
-  .timeline { list-style:none; padding:0; border-left:1px solid var(--border); margin-left:8px; }
-  .timeline li { position:relative; padding:0 0 22px 24px; }
-  .timeline li::before { content:''; position:absolute; left:-6px; top:8px; width:11px; height:11px; border-radius:50%; background:var(--bg); border:2px solid var(--accent); box-shadow:0 0 10px rgba(var(--accent-rgb),.5); }
-  .timeline time { color:var(--accent); font-size:.8rem; }
-  .timeline p { color:var(--muted); }
+  .timeline-item { display:flex; gap:18px; padding-bottom:24px; position:relative; }
+  .timeline-item::before { content:''; position:absolute; left:14px; top:30px; bottom:0; width:1px; background:var(--border); }
+  .timeline-item:last-child::before { display:none; }
+  .timeline-dot { width:30px; height:30px; border-radius:50%; background:var(--bg-card); border:2px solid var(--accent); box-shadow:0 0 12px rgba(var(--accent-rgb),.3); display:flex; align-items:center; justify-content:center; font-size:.8rem; flex-shrink:0; z-index:1; }
+  .tl-date { font-size:.7rem; color:var(--accent); letter-spacing:2px; }
+  .timeline-body p { font-size:.85rem; color:var(--muted); }
 
   .term { background:#05040a; border:1px solid var(--border); border-radius:6px; overflow:hidden; }
-  .term-bar { padding:8px 14px; background:var(--card); border-bottom:1px solid var(--border); color:var(--muted); font-size:.8rem; }
-  #out { padding:14px; min-height:150px; max-height:300px; overflow-y:auto; white-space:pre-wrap; font-size:.9rem; }
+  .term-bar { padding:8px 14px; background:var(--bg-card); border-bottom:1px solid var(--border); color:var(--muted); font-size:.75rem; }
+  #out { padding:14px; min-height:150px; max-height:300px; overflow-y:auto; white-space:pre-wrap; font-size:.88rem; }
   #out .cmd { color:var(--accent); }
-  .prompt { display:flex; gap:8px; padding:0 14px 14px; align-items:center; }
+  .prompt { display:flex; gap:8px; padding:0 14px 12px; align-items:center; }
   .prompt label { color:var(--accent); white-space:nowrap; }
   #in { flex:1; min-width:0; background:transparent; border:0; border-bottom:1px solid var(--border); color:var(--text); font:inherit; padding:4px 0; }
   #in:focus { outline:0; border-color:var(--accent); }
   .hints { padding:0 14px 14px; display:flex; flex-wrap:wrap; gap:8px; }
-  .hints button { background:none; border:1px solid var(--border); color:var(--muted); font:inherit; font-size:.8rem; padding:3px 10px; border-radius:2px; cursor:pointer; }
+  .hints button { background:none; border:1px solid var(--border); color:var(--muted); font:inherit; font-size:.75rem; padding:3px 10px; border-radius:2px; cursor:pointer; }
   .hints button:hover { color:var(--accent); border-color:var(--accent); }
 
-  footer { margin-top:44px; color:var(--muted); font-size:.8rem; }
-  @media (max-width:620px){ .hero{grid-template-columns:1fr;text-align:center;justify-items:center} }
+  .btn-outline { display:inline-block; margin-top:32px; padding:8px 18px; border:1px solid var(--accent); color:var(--accent); text-decoration:none; border-radius:2px; font-size:.8rem; }
+  .btn-outline:hover { background:rgba(var(--accent-rgb),.1); }
+  .hint-foot { margin-top:18px; color:var(--muted); font-size:.75rem; }
+
+  @media (max-width:820px){
+    .page-wrapper { grid-template-columns:1fr; }
+    .sidebar { position:static; height:auto; }
+    .main-content { padding:24px 18px 48px; }
+  }
+  @media (max-width:620px){ .member-hero { grid-template-columns:1fr; text-align:center; justify-items:center; } .skills-list { justify-content:center; } }
   @media (prefers-reduced-motion:reduce){ *{animation:none!important} }
 </style>
 </head>
 <body>
 <canvas id="rain" aria-hidden="true"></canvas>
+<div class="scanlines" aria-hidden="true"></div>
 
-<div class="wrap">
-  <div class="topbar">
-    <a href="about.html">← Back to the team</a>
+<div class="page-wrapper">
+  <aside class="sidebar">
+    <div class="sidebar-logo"><span class="logo-icon">🛸</span><h1>VOID.LOG</h1><div class="tagline">// SPACE HACKER CHRONICLES</div></div>
+    <div class="sidebar-status"><span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01</div>
+    <nav class="sidebar-nav" aria-label="Site navigation">
+      <div class="nav-section-label">— Navigation</div>
+      <a href="index.html" class="nav-link"><span>⌂</span> Home</a>
+      <a href="projects.html" class="nav-link"><span>◈</span> Projects <span class="nav-badge">7</span></a>
+      <a href="posts.html" class="nav-link"><span>◉</span> Blog Posts <span class="nav-badge">12</span></a>
+      <a href="archive.html" class="nav-link"><span>◫</span> Archive</a>
+      <a href="tags.html" class="nav-link"><span>⌗</span> Tags</a>
+      <div class="nav-section-label">— Team</div>
+      <a href="about.html" class="nav-link"><span>◈</span> About Us</a>
+      <a href="member-1.html" class="nav-link sub"><span>▸</span> Tinesh</a>
+      <a href="member-2.html" class="nav-link sub"><span>▸</span> Lai Yan Cheng</a>
+      <a href="member-3.html" class="nav-link sub"><span>▸</span> Dominic</a>
+      <a href="member-4.html" class="nav-link sub active" aria-current="page"><span>▸</span> Zuhairi</a>
+      <a href="member-5.html" class="nav-link sub"><span>▸</span> Damia</a>
+      <div class="nav-section-label">— System</div>
+      <a href="contact.html" class="nav-link"><span>◌</span> Contact</a>
+      <a href="rss.xml" class="nav-link"><span>◎</span> RSS Feed</a>
+    </nav>
     <div class="themes" role="group" aria-label="Accent colour">
       <span>accent</span>
       <button style="background:#ff2d55" data-t="red" aria-label="Red" aria-pressed="true"></button>
       <button style="background:#a855f7" data-t="violet" aria-label="Violet" aria-pressed="false"></button>
       <button style="background:#2dff9a" data-t="green" aria-label="Green" aria-pressed="false"></button>
     </div>
-  </div>
+    <div class="sidebar-footer"><div>v2.4.1-ALPHA</div><div>Last commit: <span style="color:var(--green)">2h ago</span></div><div style="margin-top:4px">Uptime: 99.8%</div></div>
+  </aside>
 
-  <header class="hero">
-    <img src="zuh.jpeg" alt="Portrait of Zuhairi, also known as Hairi" id="avatar" title="Click me" />
-    <div>
-      <h1 id="name">Hairi</h1>
-      <div class="role">Security Researcher &amp; Red Team Operator</div>
-      <div class="typed bio" id="typed" aria-label="Muhammad Zuhairi bin Mohd Ridhuan, second-year Computer Network and Security student."></div>
+  <main class="main-content">
+    <div class="page-header">
+      <div class="breadcrumb">VOID.LOG // ABOUT US // OPERATOR_04</div>
+      <h2 id="name">HAIRI</h2>
+      <div class="subtitle">// Security Researcher &amp; Red Team Operator</div>
     </div>
-  </header>
 
-  <h2>About me</h2>
-  <div class="facts">
-    <div class="fact"><span>Full name</span>Muhammad Zuhairi bin Mohd Ridhuan</div>
-    <div class="fact"><span>Born</span>27 July 2006</div>
-    <div class="fact"><span>Studying</span>Bachelor of Computer Network and Security, Year 2</div>
-    <div class="fact"><span>Alias</span>Hairi</div>
-  </div>
+    <section class="member-hero">
+      <div class="avatar"><img src="zuh.jpeg" alt="Portrait of Zuhairi, also known as Hairi" id="avatar" title="Click me" /></div>
+      <div>
+        <div class="codename">// OPERATOR_04 · HAIRI</div>
+        <h3>Hairi</h3>
+        <div class="role">Security Researcher &amp; Red Team Operator</div>
+        <div class="typed bio" id="typed" aria-label="Muhammad Zuhairi bin Mohd Ridhuan, second-year Computer Network and Security student."></div>
+        <div class="skills-list">
+          <span class="skill-badge-red">Red Teaming</span>
+          <span class="skill-badge-red">OSINT</span>
+          <span class="skill-badge-red">Vuln Research</span>
+          <span class="skill-badge-red">Web App Pentesting</span>
+        </div>
+      </div>
+    </section>
 
-  <h2>Skills and interests</h2>
-  <div class="badges">
-    <span class="badge">C++</span>
-    <span class="badge">Java</span>
-    <span class="badge">GitHub</span>
-    <span class="badge">STEM Minecraft</span>
-    <span class="badge">Red Teaming</span>
-    <span class="badge">OSINT</span>
-    <span class="badge">Vulnerability Research</span>
-    <span class="badge">Web App Pentesting</span>
-  </div>
+    <div class="section-title">About Me</div>
+    <div class="facts">
+      <div class="card"><span>Full name</span>Muhammad Zuhairi bin Mohd Ridhuan</div>
+      <div class="card"><span>Born</span>27 July 2006</div>
+      <div class="card"><span>Studying</span>Bachelor of Computer Network and Security, Year 2</div>
+      <div class="card"><span>Alias</span>Hairi</div>
+    </div>
 
-  <h2>My journey</h2>
-  <ol class="timeline">
-    <li><time>2006</time><p>Born on 27 July.</p></li>
-    <li><time>2023</time><p>Joining STEM Minecraft activity during High School. Started learning Java.</p></li>
-    <li><time>2025</time><p>Starting to learn more about C++ during first year in UTM.</p></li>
-    <li><time>Now</time><p>Second year of Computer Network and Security, building projects on GitHub.</p></li>
-    <li><time>2026</time><p>Joined the NSA crew as normal member.</p></li>
-  </ol>
+    <div class="section-title">Skills &amp; Interests</div>
+    <div class="skills-list">
+      <span class="skill-badge-red">C++</span>
+      <span class="skill-badge-red">Java</span>
+      <span class="skill-badge-red">GitHub</span>
+      <span class="skill-badge-red">STEM Minecraft</span>
+    </div>
 
-  <h2>Talk to my terminal</h2>
-  <div class="term">
-    <div class="term-bar">nova@void.log — type a command or tap one</div>
-    <div id="out" role="log" aria-live="polite"></div>
-    <div class="prompt"><label for="in">nova@void:~$</label><input id="in" autocomplete="off" spellcheck="false" /></div>
-    <div class="hints" id="hints"></div>
-  </div>
+    <div class="section-title">Mission Log</div>
+    <div class="timeline">
+      <div class="timeline-item"><div class="timeline-dot">🎂</div><div class="timeline-body"><div class="tl-date">2006</div><p>Born on 27 July.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot">⛏️</div><div class="timeline-body"><div class="tl-date">2023</div><p>Joined the STEM Minecraft activity in high school. Started learning Java.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot">💻</div><div class="timeline-body"><div class="tl-date">2025</div><p>Started learning more C++ during first year at UTM.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot">🔍</div><div class="timeline-body"><div class="tl-date">NOW</div><p>Second year of Computer Network and Security, building projects on GitHub.</p></div></div>
+      <div class="timeline-item"><div class="timeline-dot">🚀</div><div class="timeline-body"><div class="tl-date">2026</div><p>Joined the NSA crew as a member.</p></div></div>
+    </div>
 
-  <footer>VOID.LOG · Operator 04. Psst: try typing <b>sudo</b> in the terminal.</footer>
+    <div class="section-title">Talk to My Terminal</div>
+    <div class="term">
+      <div class="term-bar">hairi@void.log — type a command or tap one</div>
+      <div id="out" role="log" aria-live="polite"></div>
+      <div class="prompt"><label for="in">hairi@void:~$</label><input id="in" autocomplete="off" spellcheck="false" /></div>
+      <div class="hints" id="hints"></div>
+    </div>
+    <div class="hint-foot">Psst: try typing <b>sudo</b>.</div>
+
+    <a href="about.html" class="btn-outline">← Back to Team</a>
+  </main>
 </div>
 
 <script>
@@ -156,10 +223,10 @@ const cmds = {
   help:     () => 'Commands: whoami, skills, journey, contact, theme, clear',
   whoami:   () => 'Hairi — Muhammad Zuhairi, 2nd-year Computer Network and Security student.',
   skills:   () => 'C++ · Java · GitHub · STEM Minecraft · OSINT · Red Teaming',
-  journey:  () => '2006 born → Minecraft STEM → C++/Java → degree → VOID.LOG',
-  contact:  () => 'Reach me through the Contact page of VOID.LOG.',
+  journey:  () => '2006 born → Minecraft STEM → Java → C++ at UTM → NSA crew',
+  contact:  () => 'Reach me through the Contact page.',
   theme:    () => { const l=['red','violet','green']; const n=l[(l.indexOf(root.getAttribute('data-theme')||'red')+1)%3]; setTheme(n); return 'Accent set to ' + n + '.'; },
-  sudo:     () => 'Nice try. Nova_R3D is not in the sudoers file. This incident will be reported.',
+  sudo:     () => 'Nice try. Hairi is not in the sudoers file. This incident will be reported.',
   clear:    () => { out.textContent = ''; return null; }
 };
 function run(raw){
