@@ -1,178 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Zuhairi bin Muhd Ridhuan </title>
-  <meta name="description" content="Zuhairi— Security Researcher and Red Team operator at VOID.LOG. Expert in vulnerability research, OSINT, and adversarial simulation." />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .contrib-heatmap { display:grid; grid-template-columns:repeat(26,1fr); gap:3px; margin-top:10px; }
-    .heatmap-cell { aspect-ratio:1; border-radius:2px; background:rgba(255,45,85,0.07); transition:all .15s; }
-    .heatmap-cell:hover { transform:scale(1.3); }
-    .heatmap-cell.l1 { background:rgba(255,45,85,0.2); }
-    .heatmap-cell.l2 { background:rgba(255,45,85,0.4); }
-    .heatmap-cell.l3 { background:rgba(255,45,85,0.65); }
-    .heatmap-cell.l4 { background:rgba(255,45,85,0.9); box-shadow:0 0 6px rgba(255,45,85,0.4); }
-    .timeline { display:flex; flex-direction:column; gap:0; }
-    .timeline-item { display:flex; gap:18px; padding-bottom:24px; position:relative; }
-    .timeline-item::before { content:''; position:absolute; left:14px; top:24px; bottom:0; width:1px; background:var(--border); }
-    .timeline-item:last-child::before { display:none; }
-    .timeline-dot { width:30px; height:30px; border-radius:50%; background:var(--bg-card); border:2px solid var(--red); box-shadow:0 0 12px rgba(255,45,85,0.3); display:flex; align-items:center; justify-content:center; font-size:.75rem; flex-shrink:0; z-index:1; }
-    .timeline-body h4 { font-family:'Orbitron',sans-serif; font-size:.8rem; color:var(--text-primary); letter-spacing:1px; margin-bottom:4px; }
-    .timeline-body .tl-date { font-size:.62rem; color:var(--red); letter-spacing:2px; margin-bottom:4px; }
-    .timeline-body p { font-size:.72rem; color:var(--text-muted); line-height:1.7; }
-    .skill-badge-red { font-size:.65rem; padding:4px 12px; background:rgba(255,45,85,0.08); border:1px solid rgba(255,45,85,0.25); border-radius:2px; color:var(--red); letter-spacing:1px; }
-    .progress-fill-red { background:linear-gradient(90deg,var(--red),var(--purple)) !important; }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muhammad Zuhairi bin Mohd Ridhuan | Nova_R3D</title>
+<meta name="description" content="Zuhairi (Nova_R3D) is a Computer Network and Security student and aspiring red team operator at VOID.LOG." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+<style>
+  :root { --bg:#07060d; --card:#100d1a; --border:#2a2140; --text:#e8e4f5; --muted:#9a90b8; --accent:#ff2d55; --accent-rgb:255,45,85; }
+  [data-theme="violet"] { --accent:#a855f7; --accent-rgb:168,85,247; }
+  [data-theme="green"]  { --accent:#2dff9a; --accent-rgb:45,255,154; }
+  * { box-sizing:border-box; margin:0; }
+  body { background:var(--bg); color:var(--text); font-family:'Share Tech Mono',ui-monospace,Consolas,monospace; line-height:1.7; min-height:100vh; }
+  #rain { position:fixed; inset:0; width:100%; height:100%; z-index:0; opacity:.14; pointer-events:none; }
+  .wrap { position:relative; z-index:1; max-width:820px; margin:0 auto; padding:28px 20px 64px; }
+  a { color:var(--accent); }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+
+  .topbar { display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap; margin-bottom:36px; font-size:.85rem; }
+  .topbar a { text-decoration:none; color:var(--muted); }
+  .topbar a:hover { color:var(--accent); }
+  .themes { display:flex; gap:8px; align-items:center; color:var(--muted); }
+  .themes button { width:22px; height:22px; border-radius:50%; border:2px solid var(--border); cursor:pointer; }
+  .themes button[aria-pressed="true"] { border-color:var(--text); }
+
+  .hero { display:grid; grid-template-columns:180px 1fr; gap:28px; align-items:center; padding:28px; background:var(--card); border:1px solid rgba(var(--accent-rgb),.35); border-radius:6px; box-shadow:0 0 40px rgba(var(--accent-rgb),.12); }
+  .hero img { width:180px; height:180px; object-fit:cover; border-radius:50%; border:2px solid var(--accent); box-shadow:0 0 30px rgba(var(--accent-rgb),.35); background:#1a1528; cursor:pointer; }
+  h1 { font-family:'Orbitron',sans-serif; font-weight:800; font-size:clamp(1.8rem,5vw,2.6rem); color:var(--accent); text-shadow:0 0 18px rgba(var(--accent-rgb),.45); letter-spacing:2px; }
+  h1.glitch { animation:glitch .35s steps(2) 1; }
+  @keyframes glitch { 0%{transform:translate(2px,0);filter:hue-rotate(60deg)} 50%{transform:translate(-3px,1px)} 100%{transform:none} }
+  .role { color:var(--accent); margin:2px 0 12px; }
+  .typed::after { content:'▌'; margin-left:2px; animation:blink 1s steps(1) infinite; }
+  @keyframes blink { 50%{opacity:0} }
+  .bio { color:var(--muted); max-width:56ch; }
+
+  h2 { font-family:'Orbitron',sans-serif; font-size:1rem; letter-spacing:2px; margin:40px 0 14px; color:var(--text); }
+  .facts { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px; }
+  .fact { background:var(--card); border:1px solid var(--border); border-radius:4px; padding:12px 14px; }
+  .fact span { display:block; color:var(--muted); font-size:.8rem; }
+  .badges { display:flex; flex-wrap:wrap; gap:8px; }
+  .badge { padding:5px 13px; border:1px solid rgba(var(--accent-rgb),.35); background:rgba(var(--accent-rgb),.08); color:var(--accent); border-radius:2px; font-size:.85rem; }
+
+  .timeline { list-style:none; padding:0; border-left:1px solid var(--border); margin-left:8px; }
+  .timeline li { position:relative; padding:0 0 22px 24px; }
+  .timeline li::before { content:''; position:absolute; left:-6px; top:8px; width:11px; height:11px; border-radius:50%; background:var(--bg); border:2px solid var(--accent); box-shadow:0 0 10px rgba(var(--accent-rgb),.5); }
+  .timeline time { color:var(--accent); font-size:.8rem; }
+  .timeline p { color:var(--muted); }
+
+  .term { background:#05040a; border:1px solid var(--border); border-radius:6px; overflow:hidden; }
+  .term-bar { padding:8px 14px; background:var(--card); border-bottom:1px solid var(--border); color:var(--muted); font-size:.8rem; }
+  #out { padding:14px; min-height:150px; max-height:300px; overflow-y:auto; white-space:pre-wrap; font-size:.9rem; }
+  #out .cmd { color:var(--accent); }
+  .prompt { display:flex; gap:8px; padding:0 14px 14px; align-items:center; }
+  .prompt label { color:var(--accent); white-space:nowrap; }
+  #in { flex:1; min-width:0; background:transparent; border:0; border-bottom:1px solid var(--border); color:var(--text); font:inherit; padding:4px 0; }
+  #in:focus { outline:0; border-color:var(--accent); }
+  .hints { padding:0 14px 14px; display:flex; flex-wrap:wrap; gap:8px; }
+  .hints button { background:none; border:1px solid var(--border); color:var(--muted); font:inherit; font-size:.8rem; padding:3px 10px; border-radius:2px; cursor:pointer; }
+  .hints button:hover { color:var(--accent); border-color:var(--accent); }
+
+  footer { margin-top:44px; color:var(--muted); font-size:.8rem; }
+  @media (max-width:620px){ .hero{grid-template-columns:1fr;text-align:center;justify-items:center} }
+  @media (prefers-reduced-motion:reduce){ *{animation:none!important} }
+</style>
 </head>
 <body>
-  <canvas id="binary-canvas"></canvas>
-  <div class="scanlines"></div>
+<canvas id="rain" aria-hidden="true"></canvas>
 
-  <div class="page-wrapper">
-    <aside class="sidebar">
-      <div class="sidebar-logo"><span class="logo-icon">🛸</span><h1>VOID.LOG</h1><div class="tagline">// SPACE HACKER CHRONICLES</div></div>
-      <div class="sidebar-status"><span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01</div>
-      <nav class="sidebar-nav">
-        <div class="nav-section-label">— Navigation</div>
-        <a href="index.html" class="nav-link"><span class="nav-icon">⌂</span> Home</a>
-        <a href="projects.html" class="nav-link"><span class="nav-icon">◈</span> Projects <span class="nav-badge">7</span></a>
-        <a href="posts.html" class="nav-link"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">12</span></a>
-        <a href="archive.html" class="nav-link"><span class="nav-icon">◫</span> Archive</a>
-        <a href="tags.html" class="nav-link"><span class="nav-icon">⌗</span> Tags</a>
-        <div class="nav-section-label" style="margin-top:12px">— Team</div>
-        <a href="about.html" class="nav-link"><span class="nav-icon">◈</span> About Us</a>
-        <a href="member-1.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Tinesh</a>
-        <a href="member-2.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Lai Yan Cheng</a>
-        <a href="member-3.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Dominic</a>
-        <a href="member-4.html" class="nav-link active" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Zuhairi</a>
-        <div class="nav-section-label" style="margin-top:12px">— System</div>
-        <a href="contact.html" class="nav-link"><span class="nav-icon">◌</span> Contact</a>
-        <a href="rss.xml" class="nav-link"><span class="nav-icon">◎</span> RSS Feed</a>
-      </nav>
-      <div class="sidebar-footer"><div class="version">v2.4.1-ALPHA</div><div>Last commit: <span style="color:var(--green)">2h ago</span></div><div style="margin-top:4px">Uptime: 99.8%</div></div>
-    </aside>
-
-    <main class="main-content">
-      <div class="page-header animate-in">
-        <div class="breadcrumb">VOID.LOG // ABOUT US // OPERATOR_04</div>
-        <h2 style="color:var(--red);text-shadow:0 0 20px rgba(255,45,85,0.4)">NOVA_R3D</h2>
-        <div class="subtitle">// Security Researcher &amp; Red Team Operator</div>
-      </div>
-
-      <div class="member-hero animate-in" style="border-color:rgba(255,45,85,0.25)">
-        <div class="member-hero-avatar">
-          <img src="zuh.jpeg" alt="Nova_R3D" style="border-color:rgba(255,45,85,0.6);box-shadow:0 0 40px rgba(255,45,85,0.3)" />
-          <div class="member-hero-ring" style="border-color:rgba(255,45,85,0.3)"></div>
-        </div>
-        <div class="member-hero-info">
-          <div class="codename" style="color:var(--red)">// OPERATOR_04 · NOVA_R3D</div>
-          <h2>Nova_R3D</h2>
-          <div class="role" style="color:var(--red)">Security Researcher &amp; Red Team Operator</div>
-          <p class="bio">
-           Muhammad Zuhairi bin Mohd Ridhuan, 2nd Year in Bachelor Degree Computer Network and Security, Born in 27 July 2006. Exxperience in STEM Minecraft, C++, Java and Github.
-          </p>
-          <div class="skills-list">
-            <span class="skill-badge-red">Red Teaming</span>
-            <span class="skill-badge-red">OSINT</span>
-            <span class="skill-badge-red">Vuln Research</span>
-            <span class="skill-badge-red">Web App Pentesting</span>
-            <span class="skill-badge-red">Social Engineering</span>
-            <span class="skill-badge-red">Threat Intel</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="stats-bar" style="grid-template-columns:repeat(4,1fr);margin-bottom:28px">
-        <div class="stat-card"><span class="stat-value" data-target="27">0</span><span class="stat-label">Posts Written</span></div>
-        <div class="stat-card"><span class="stat-value" data-target="3">0</span><span class="stat-label">Projects Led</span></div>
-        <div class="stat-card"><span class="stat-value" data-target="9">0</span><span class="stat-label">CVEs Disclosed</span></div>
-        <div class="stat-card"><span class="stat-value" data-target="14">0</span><span class="stat-label">Targets Pwned</span></div>
-      </div>
-
-      <div class="section-title">Activity Heatmap</div>
-      <div class="card" style="margin-bottom:28px">
-        <div style="font-size:.65rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:10px">COMMITS &amp; POSTS — LAST 26 WEEKS</div>
-        <div class="contrib-heatmap" id="heatmap-4"></div>
-      </div>
-
-      <div class="section-title">Skill Proficiency</div>
-      <div class="card" style="margin-bottom:28px">
-        <div style="display:grid;gap:14px">
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>Offensive Security</span><span style="color:var(--red)">97%</span></div>
-            <div class="progress-bar"><div class="progress-fill progress-fill-red" style="width:97%"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>OSINT / Recon</span><span style="color:var(--red)">93%</span></div>
-            <div class="progress-bar"><div class="progress-fill progress-fill-red" style="width:93%"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>Vulnerability Research</span><span style="color:var(--red)">89%</span></div>
-            <div class="progress-bar"><div class="progress-fill progress-fill-red" style="width:89%"></div></div>
-          </div>
-          <div>
-            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>Hardware Hacking</span><span style="color:var(--red)">74%</span></div>
-            <div class="progress-bar"><div class="progress-fill progress-fill-red" style="width:74%"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="section-title">Mission Log</div>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-dot">⚠️</div>
-          <div class="timeline-body">
-            <div class="tl-date">SEP 2026</div>
-            <h4>Zero-Day Disclosure: Telemetry CVE-2026-4481</h4>
-            <p>Discovered and coordinated responsible disclosure of a critical RCE in satellite ground station software used by 3 commercial operators.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot">🔍</div>
-          <div class="timeline-body">
-            <div class="tl-date">JUN 2026</div>
-            <h4>OSINT Mapping of Orbital Assets</h4>
-            <p>Published methodology for passively mapping commercial satellite positions using only open data sources and signal timing.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot">🚨</div>
-          <div class="timeline-body">
-            <div class="tl-date">MAR 2026</div>
-            <h4>Red Team Simulation — Project NEBULA</h4>
-            <p>Ran full red team simulation against the NEBULA sensor mesh before deployment. Found and fixed 4 attack vectors.</p>
-          </div>
-        </div>
-        <div class="timeline-item">
-          <div class="timeline-dot">🚀</div>
-          <div class="timeline-body">
-            <div class="tl-date">JAN 2026</div>
-            <h4>Joined VOID.LOG</h4>
-            <p>Came aboard as the crew's adversarial security lead — turning the tables on threat actors targeting space infrastructure.</p>
-          </div>
-        </div>
-      </div>
-
-      <div style="margin-top:32px">
-        <a href="about.html" class="btn btn-outline">← Back to Team</a>
-      </div>
-    </main>
+<div class="wrap">
+  <div class="topbar">
+    <a href="about.html">← Back to the team</a>
+    <div class="themes" role="group" aria-label="Accent colour">
+      <span>accent</span>
+      <button style="background:#ff2d55" data-t="red" aria-label="Red" aria-pressed="true"></button>
+      <button style="background:#a855f7" data-t="violet" aria-label="Violet" aria-pressed="false"></button>
+      <button style="background:#2dff9a" data-t="green" aria-label="Green" aria-pressed="false"></button>
+    </div>
   </div>
 
-  <script src="main.js"></script>
-  <script>
-    const heatmap = document.getElementById('heatmap-4');
-    if (heatmap) {
-      for (let i = 0; i < 26 * 7; i++) {
-        const cell = document.createElement('div');
-        const r = Math.random();
-        const level = r > 0.78 ? 'l4' : r > 0.58 ? 'l3' : r > 0.38 ? 'l2' : r > 0.18 ? 'l1' : '';
-        cell.className = 'heatmap-cell ' + level;
-        heatmap.appendChild(cell);
-      }
-    }
-  </script>
+  <header class="hero">
+    <img src="zuh.jpeg" alt="Portrait of Zuhairi, also known as Nova_R3D" id="avatar" title="Click me" />
+    <div>
+      <h1 id="name">NOVA_R3D</h1>
+      <div class="role">Security Researcher &amp; Red Team Operator</div>
+      <div class="typed bio" id="typed" aria-label="Muhammad Zuhairi bin Mohd Ridhuan, second-year Computer Network and Security student."></div>
+    </div>
+  </header>
+
+  <h2>About me</h2>
+  <div class="facts">
+    <div class="fact"><span>Full name</span>Muhammad Zuhairi bin Mohd Ridhuan</div>
+    <div class="fact"><span>Born</span>27 July 2006</div>
+    <div class="fact"><span>Studying</span>Bachelor of Computer Network and Security, Year 2</div>
+    <div class="fact"><span>Alias</span>Nova_R3D</div>
+  </div>
+
+  <h2>Skills and interests</h2>
+  <div class="badges">
+    <span class="badge">C++</span>
+    <span class="badge">Java</span>
+    <span class="badge">GitHub</span>
+    <span class="badge">STEM Minecraft</span>
+    <span class="badge">Red Teaming</span>
+    <span class="badge">OSINT</span>
+    <span class="badge">Vulnerability Research</span>
+    <span class="badge">Web App Pentesting</span>
+  </div>
+
+  <h2>My journey</h2>
+  <ol class="timeline">
+    <li><time>2006</time><p>Born on 27 July.</p></li>
+    <li><time>Early on</time><p>Started with STEM Minecraft, then moved on to C++ and Java.</p></li>
+    <li><time>Now</time><p>Second year of Computer Network and Security, building projects on GitHub.</p></li>
+    <li><time>2026</time><p>Joined the VOID.LOG crew as the adversarial security lead.</p></li>
+  </ol>
+
+  <h2>Talk to my terminal</h2>
+  <div class="term">
+    <div class="term-bar">nova@void.log — type a command or tap one</div>
+    <div id="out" role="log" aria-live="polite"></div>
+    <div class="prompt"><label for="in">nova@void:~$</label><input id="in" autocomplete="off" spellcheck="false" /></div>
+    <div class="hints" id="hints"></div>
+  </div>
+
+  <footer>VOID.LOG · Operator 04. Psst: try typing <b>sudo</b> in the terminal.</footer>
+</div>
+
+<script>
+/* Accent colour switcher (saved when storage is available) */
+const root = document.documentElement;
+function setTheme(t){
+  if (t === 'red') root.removeAttribute('data-theme'); else root.setAttribute('data-theme', t);
+  document.querySelectorAll('.themes button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.t === t)));
+  try { localStorage.setItem('zuh-theme', t); } catch(e){}
+}
+document.querySelectorAll('.themes button').forEach(b => b.addEventListener('click', () => setTheme(b.dataset.t)));
+try { const s = localStorage.getItem('zuh-theme'); if (s) setTheme(s); } catch(e){}
+
+/* Typing intro */
+const typed = document.getElementById('typed');
+const intro = typed.getAttribute('aria-label');
+if (matchMedia('(prefers-reduced-motion:reduce)').matches) typed.textContent = intro;
+else { let i = 0; (function tick(){ typed.textContent = intro.slice(0, ++i); if (i < intro.length) setTimeout(tick, 28); })(); }
+
+/* Click the avatar for a glitch */
+document.getElementById('avatar').addEventListener('click', () => {
+  const h = document.getElementById('name'); h.classList.remove('glitch'); void h.offsetWidth; h.classList.add('glitch');
+});
+
+/* Terminal */
+const out = document.getElementById('out'), input = document.getElementById('in'), hints = document.getElementById('hints');
+const cmds = {
+  help:     () => 'Commands: whoami, skills, journey, contact, theme, clear',
+  whoami:   () => 'Nova_R3D — Muhammad Zuhairi, 2nd-year Computer Network and Security student.',
+  skills:   () => 'C++ · Java · GitHub · STEM Minecraft · OSINT · Red Teaming',
+  journey:  () => '2006 born → Minecraft STEM → C++/Java → degree → VOID.LOG',
+  contact:  () => 'Reach me through the Contact page of VOID.LOG.',
+  theme:    () => { const l=['red','violet','green']; const n=l[(l.indexOf(root.getAttribute('data-theme')||'red')+1)%3]; setTheme(n); return 'Accent set to ' + n + '.'; },
+  sudo:     () => 'Nice try. Nova_R3D is not in the sudoers file. This incident will be reported.',
+  clear:    () => { out.textContent = ''; return null; }
+};
+function run(raw){
+  const c = raw.trim().toLowerCase(); if (!c) return;
+  const line = document.createElement('div'); line.innerHTML = '<span class="cmd">$ </span>'; line.append(raw); out.append(line);
+  const fn = cmds[c.split(' ')[0]];
+  const res = fn ? fn() : 'Unknown command: ' + c + '. Type help.';
+  if (res !== null) { const r = document.createElement('div'); r.textContent = res; out.append(r); }
+  out.scrollTop = out.scrollHeight;
+}
+input.addEventListener('keydown', e => { if (e.key === 'Enter') { run(input.value); input.value = ''; } });
+['whoami','skills','journey','theme','help'].forEach(c => {
+  const b = document.createElement('button'); b.textContent = c; b.addEventListener('click', () => run(c)); hints.append(b);
+});
+run('help');
+
+/* Binary rain background */
+const cv = document.getElementById('rain'), ctx = cv.getContext('2d');
+let cols, drops;
+function size(){ cv.width = innerWidth; cv.height = innerHeight; cols = Math.floor(cv.width/16); drops = Array.from({length:cols}, () => Math.random()*cv.height/16); }
+size(); addEventListener('resize', size);
+if (!matchMedia('(prefers-reduced-motion:reduce)').matches) setInterval(() => {
+  ctx.fillStyle = 'rgba(7,6,13,.12)'; ctx.fillRect(0,0,cv.width,cv.height);
+  ctx.fillStyle = getComputedStyle(root).getPropertyValue('--accent'); ctx.font = '14px monospace';
+  drops.forEach((y,i) => { ctx.fillText(Math.random()>.5?'1':'0', i*16, y*16); drops[i] = y*16 > cv.height && Math.random()>.97 ? 0 : y+1; });
+}, 70);
+</script>
 </body>
 </html>
