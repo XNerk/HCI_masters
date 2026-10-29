@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — VOID.LOG</title>
+  <meta name="description" content="Contact the VOID.LOG crew — reach out for collaboration, security reports, or just to say hello from deep space." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    @media (max-width: 700px) { .contact-grid { grid-template-columns: 1fr; } }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      background: rgba(0,10,2,0.8);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      padding: 10px 14px;
+      color: var(--text-primary);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.78rem;
+      margin-bottom: 18px;
+      transition: border-color 0.2s;
+      outline: none;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      border-color: var(--border-bright);
+      box-shadow: 0 0 12px rgba(0,255,65,0.07);
+    }
+
+    .contact-form textarea { resize: vertical; min-height: 140px; }
+
+    .contact-form select option { background: #010b01; }
+
+    .contact-info-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    .contact-info-card h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.78rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+
+    .contact-info-card p {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-link:last-child { border-bottom: none; }
+    .contact-link:hover { color: var(--green); }
+    .contact-link .link-icon { font-size: 1rem; min-width: 24px; }
+  </style>
+</head>
+<body>
+  <canvas id="binary-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><span class="logo-icon">🛸</span><h1>VOID.LOG</h1><div class="tagline">// SPACE HACKER CHRONICLES</div></div>
+      <div class="sidebar-status"><span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01</div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">— Navigation</div>
+        <a href="index.html" class="nav-link"><span class="nav-icon">⌂</span> Home</a>
+        <a href="projects.html" class="nav-link"><span class="nav-icon">◈</span> Projects <span class="nav-badge">7</span></a>
+        <a href="posts.html" class="nav-link"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">12</span></a>
+        <a href="archive.html" class="nav-link"><span class="nav-icon">◫</span> Archive</a>
+        <a href="tags.html" class="nav-link"><span class="nav-icon">⌗</span> Tags</a>
+        <div class="nav-section-label" style="margin-top:12px">— Team</div>
+        <a href="about.html" class="nav-link"><span class="nav-icon">◈</span> About Us</a>
+        <a href="member-1.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Ghost_Zero</a>
+        <a href="member-2.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Cipher_X</a>
+        <a href="member-3.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Orion_77</a>
+        <a href="member-4.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Nova_R3D</a>
+        <div class="nav-section-label" style="margin-top:12px">— System</div>
+        <a href="contact.html" class="nav-link active"><span class="nav-icon">◌</span> Contact</a>
+        <a href="rss.xml" class="nav-link"><span class="nav-icon">◎</span> RSS Feed</a>
+      </nav>
+      <div class="sidebar-footer"><div class="version">v2.4.1-ALPHA</div><div>Last commit: <span style="color:var(--green)">2h ago</span></div><div style="margin-top:4px">Uptime: 99.8%</div></div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header animate-in">
+        <div class="breadcrumb">VOID.LOG // CONTACT</div>
+        <h2 class="glitch" data-text="PING US">PING US</h2>
+        <div class="subtitle">// Open channel — transmissions are read by all crew members</div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Form -->
+        <div class="card animate-in contact-form">
+          <div class="section-title" style="margin-bottom:20px">Send Transmission</div>
+          <label for="contact-name">// CALLSIGN</label>
+          <input type="text" id="contact-name" placeholder="Your name or handle..." />
+
+          <label for="contact-email">// FREQUENCY (EMAIL)</label>
+          <input type="email" id="contact-email" placeholder="your@email.com" />
+
+          <label for="contact-type">// MESSAGE TYPE</label>
+          <select id="contact-type">
+            <option value="">Select type...</option>
+            <option>Collaboration</option>
+            <option>Security Report</option>
+            <option>General Inquiry</option>
+            <option>Media / Press</option>
+            <option>Just saying hi from the void</option>
+          </select>
+
+          <label for="contact-msg">// MESSAGE PAYLOAD</label>
+          <textarea id="contact-msg" placeholder="Your message..."></textarea>
+
+          <button class="btn btn-primary" onclick="sendMsg()" style="width:100%;justify-content:center">
+            ◌ TRANSMIT MESSAGE
+          </button>
+          <div id="form-confirm" style="display:none;margin-top:14px;font-size:0.72rem;color:var(--green);text-align:center;letter-spacing:1px">
+            ✓ TRANSMISSION RECEIVED. WE'LL RESPOND WITHIN 48H.
+          </div>
+        </div>
+
+        <!-- Info -->
+        <div class="animate-in">
+          <div class="contact-info-card">
+            <h4>// HOW TO REACH US</h4>
+            <p>We read everything. Security reports get highest priority. Responsible disclosure is always welcome and always credited.</p>
+          </div>
+
+          <div class="contact-info-card">
+            <h4>// CHANNELS</h4>
+            <a class="contact-link" href="#">
+              <span class="link-icon">📧</span> hello@voidlog.space
+            </a>
+            <a class="contact-link" href="#">
+              <span class="link-icon">🐙</span> github.com/voidlog-crew
+            </a>
+            <a class="contact-link" href="#">
+              <span class="link-icon">🐦</span> @voidlog_space
+            </a>
+            <a class="contact-link" href="#">
+              <span class="link-icon">💬</span> Discord: VOID.LOG Server
+            </a>
+          </div>
+
+          <div class="contact-info-card">
+            <h4>// SECURITY DISCLOSURE</h4>
+            <p>For security reports: <span style="color:var(--red)">security@voidlog.space</span></p>
+            <p style="margin-top:8px">PGP key available on request. We follow 90-day responsible disclosure policy for all issues.</p>
+          </div>
+
+          <div class="terminal-box" style="margin-top:16px">
+            <div class="terminal-bar">
+              <div class="terminal-dot red"></div>
+              <div class="terminal-dot yellow"></div>
+              <div class="terminal-dot green"></div>
+              <span class="terminal-title">STATUS</span>
+            </div>
+            <div class="terminal-body" style="font-size:0.72rem">
+              <div class="terminal-line dim">Response time: ~24-48h</div>
+              <div class="terminal-line">Security reports: PRIORITY</div>
+              <div class="terminal-line dim">Current timezone: UTC+8</div>
+              <div class="terminal-line cursor-blink">Channel is open</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    function sendMsg() {
+      const name = document.getElementById('contact-name').value;
+      const email = document.getElementById('contact-email').value;
+      const msg = document.getElementById('contact-msg').value;
+      if (!name || !email || !msg) {
+        alert('Please fill in all required fields.');
+        return;
+      }
+      document.getElementById('form-confirm').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

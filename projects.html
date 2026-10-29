@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — VOID.LOG</title>
+  <meta name="description" content="VOID.LOG project completions — a log of all missions undertaken, from FPGA builds to satellite hacking and beyond." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="binary-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><span class="logo-icon">🛸</span><h1>VOID.LOG</h1><div class="tagline">// SPACE HACKER CHRONICLES</div></div>
+      <div class="sidebar-status"><span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01</div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">— Navigation</div>
+        <a href="index.html" class="nav-link"><span class="nav-icon">⌂</span> Home</a>
+        <a href="projects.html" class="nav-link active"><span class="nav-icon">◈</span> Projects <span class="nav-badge">7</span></a>
+        <a href="posts.html" class="nav-link"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">12</span></a>
+        <a href="archive.html" class="nav-link"><span class="nav-icon">◫</span> Archive</a>
+        <a href="tags.html" class="nav-link"><span class="nav-icon">⌗</span> Tags</a>
+        <div class="nav-section-label" style="margin-top:12px">— Team</div>
+        <a href="about.html" class="nav-link"><span class="nav-icon">◈</span> About Us</a>
+        <a href="member-1.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Ghost_Zero</a>
+        <a href="member-2.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Cipher_X</a>
+        <a href="member-3.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Orion_77</a>
+        <a href="member-4.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Nova_R3D</a>
+        <div class="nav-section-label" style="margin-top:12px">— System</div>
+        <a href="contact.html" class="nav-link"><span class="nav-icon">◌</span> Contact</a>
+        <a href="rss.xml" class="nav-link"><span class="nav-icon">◎</span> RSS Feed</a>
+      </nav>
+      <div class="sidebar-footer"><div class="version">v2.4.1-ALPHA</div><div>Last commit: <span style="color:var(--green)">2h ago</span></div><div style="margin-top:4px">Uptime: 99.8%</div></div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header animate-in">
+        <div class="breadcrumb">VOID.LOG // PROJECTS</div>
+        <h2 class="glitch" data-text="MISSIONS">MISSIONS</h2>
+        <div class="subtitle">// Project completions, active missions &amp; archived experiments</div>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="animate-in" style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px">
+        <button onclick="filterProjects('all')" id="filter-all" style="padding:6px 16px;background:var(--green);color:var(--bg-dark);border:none;border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:2px;cursor:pointer">ALL</button>
+        <button onclick="filterProjects('complete')" id="filter-complete" style="padding:6px 16px;background:transparent;color:var(--green);border:1px solid var(--border);border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:2px;cursor:pointer">COMPLETE</button>
+        <button onclick="filterProjects('active')" id="filter-active" style="padding:6px 16px;background:transparent;color:var(--green);border:1px solid var(--border);border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:2px;cursor:pointer">ACTIVE</button>
+        <button onclick="filterProjects('archive')" id="filter-archive" style="padding:6px 16px;background:transparent;color:var(--green);border:1px solid var(--border);border-radius:3px;font-family:'Share Tech Mono',monospace;font-size:0.7rem;letter-spacing:2px;cursor:pointer">ARCHIVED</button>
+      </div>
+
+      <div class="stats-bar" style="grid-template-columns:repeat(3,1fr);margin-bottom:32px">
+        <div class="stat-card"><span class="stat-value" data-target="4">0</span><span class="stat-label">Completed</span></div>
+        <div class="stat-card"><span class="stat-value" data-target="3">0</span><span class="stat-label">Active</span></div>
+        <div class="stat-card"><span class="stat-value" data-target="0">0</span><span class="stat-label">Archived</span></div>
+      </div>
+
+      <div class="section-title">Project Log</div>
+      <div class="project-list" id="project-list">
+
+        <div class="project-item" data-status="complete">
+          <div>
+            <h3>PROJECT NEBULA</h3>
+            <p>Distributed atmospheric sensor mesh deployed across 12 ground nodes. Real-time telemetry aggregation with edge ML anomaly detection. Phase 1 complete, Phase 2 in planning.</p>
+            <div class="project-meta">
+              <span>📅 COMPLETED: 2026-10-10</span>
+              <span>👤 LEAD: Orion_77</span>
+              <span>🏷️ HARDWARE, EMBEDDED, ML</span>
+            </div>
+            <div class="progress-bar" style="margin-top:14px"><div class="progress-fill" style="width:100%"></div></div>
+          </div>
+          <div><span class="project-status status-complete">COMPLETE</span></div>
+        </div>
+
+        <div class="project-item" data-status="complete">
+          <div>
+            <h3>DARK MATTER MAPPER</h3>
+            <p>Machine learning pipeline for mapping dark matter distributions from gravitational lensing images. Trained on 2.3M galaxy images. Achieved 91.4% accuracy on test set vs. existing models at 87%.</p>
+            <div class="project-meta">
+              <span>📅 COMPLETED: 2026-10-22</span>
+              <span>👤 LEAD: Cipher_X</span>
+              <span>🏷️ ML, ASTROPHYSICS, PYTHON</span>
+            </div>
+            <div class="progress-bar" style="margin-top:14px"><div class="progress-fill" style="width:100%"></div></div>
+          </div>
+          <div><span class="project-status status-complete">COMPLETE</span></div>
+        </div>
+
+        <div class="project-item" data-status="complete">
+          <div>
+            <h3>RISC-V SILICON CORE</h3>
+            <p>From-scratch implementation of a 32-bit RISC-V processor in VHDL. Synthesized and deployed on Xilinx Artix-7 FPGA. Successfully booted a minimal RTOS. Pipeline: Fetch → Decode → Execute → Writeback.</p>
+            <div class="project-meta">
+              <span>📅 COMPLETED: 2026-08-15</span>
+              <span>👤 LEAD: Ghost_Zero</span>
+              <span>🏷️ FPGA, VHDL, CPU DESIGN</span>
+            </div>
+            <div class="progress-bar" style="margin-top:14px"><div class="progress-fill" style="width:100%"></div></div>
+          </div>
+          <div><span class="project-status status-complete">COMPLETE</span></div>
+        </div>
+
+        <div class="project-item" data-status="complete">
+          <div>
+            <h3>TELEMETRY ZERO-DAY RESEARCH</h3>
+            <p>Responsible disclosure project: found critical RCE in commercial satellite ground station software (CVE-2026-4481). Full writeup published after 90-day embargo. Vendor patched in v2.8.3.</p>
+            <div class="project-meta">
+              <span>📅 COMPLETED: 2026-09-30</span>
+              <span>👤 LEAD: Nova_R3D</span>
+              <span>🏷️ SECURITY, CVE, SPACE-SEC</span>
+            </div>
+            <div class="progress-bar" style="margin-top:14px"><div class="progress-fill" style="width:100%"></div></div>
+          </div>
+          <div><span class="project-status status-complete">COMPLETE</span></div>
+        </div>
+
+        <div class="project-item" data-status="active">
+          <div>
+            <h3>PROJECT PULSAR — CUBESAT OBC</h3>
+            <p>Designing a 1U CubeSat on-board computer with radiation-hardened components. Custom PCB in revision 3. Target: first orbital deployment via rideshare. Currently in component validation phase.</p>
+            <div class="project-meta">
+              <span>📅 STARTED: 2026-07-01</span>
+              <span>👤 LEAD: Orion_77</span>
+              <span>🏷️ HARDWARE, CUBESAT, SPACE</span>
+            </div>
+            <div class="progress-bar" style="margin-top:14px"><div class="progress-fill" style="width:55%"></div></div>
+          </div>
+          <div><span class="project-status status-active">ACTIVE</span></div>
+        </div>
+
+        <div class="project-item" data-status="active">
+          <div>
+            <h3>DEEP SPACE NET — SIGNAL ARRAY</h3>
+            <p>Building a phased-array dish system for amateur deep space network participation. Currently at 2/8 dish modules. Target: first lunar bounce signal reception by Q1 2027.</p>
+            <div class="project-meta">
+              <span>📅 STARTED: 2026-06-15</span>
+              <span>👤 LEAD: Ghost_Zero, Orion_77</span>
+              <span>🏷️ RF, SDR, AMATEUR RADIO</span>
+            </div>
+            <div class="progress-bar" style="margin-top:14px"><div class="progress-fill" style="width:28%"></div></div>
+          </div>
+          <div><span class="project-status status-active">ACTIVE</span></div>
+        </div>
+
+        <div class="project-item" data-status="active">
+          <div>
+            <h3>POST-QUANTUM COMMS LAYER</h3>
+            <p>Implementing a CRYSTALS-Kyber based key exchange and Dilithium signature scheme for space telemetry authentication. Research phase complete; implementation in progress.</p>
+            <div class="project-meta">
+              <span>📅 STARTED: 2026-08-01</span>
+              <span>👤 LEAD: Cipher_X</span>
+              <span>🏷️ CRYPTO, POST-QUANTUM, SECURITY</span>
+            </div>
+            <div class="progress-bar" style="margin-top:14px"><div class="progress-fill" style="width:42%"></div></div>
+          </div>
+          <div><span class="project-status status-active">ACTIVE</span></div>
+        </div>
+
+      </div><!-- /project-list -->
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    function filterProjects(status) {
+      document.querySelectorAll('[id^="filter-"]').forEach(b => {
+        b.style.background = 'transparent';
+        b.style.color = 'var(--green)';
+      });
+      const btn = document.getElementById('filter-' + status);
+      if (btn) { btn.style.background = 'var(--green)'; btn.style.color = 'var(--bg-dark)'; }
+
+      document.querySelectorAll('#project-list .project-item').forEach(item => {
+        if (status === 'all' || item.dataset.status === status) {
+          item.style.display = 'grid';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

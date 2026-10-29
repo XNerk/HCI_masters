@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us — VOID.LOG</title>
+  <meta name="description" content="Meet the VOID.LOG crew — the space hackers, engineers, and researchers behind the projects and posts." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .about-intro {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 700px) { .about-intro { grid-template-columns: 1fr; } }
+
+    .about-intro-text h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green);
+      text-shadow: 0 0 16px var(--green-glow);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .about-intro-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+
+    .about-mission-items { display: flex; flex-direction: column; gap: 14px; }
+
+    .mission-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: rgba(0,255,65,0.03);
+      transition: all 0.25s;
+    }
+
+    .mission-item:hover {
+      border-color: var(--border-bright);
+      background: rgba(0,255,65,0.06);
+    }
+
+    .mission-icon {
+      font-size: 1.4rem;
+      min-width: 32px;
+      filter: drop-shadow(0 0 6px var(--green));
+    }
+
+    .mission-text h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .mission-text p {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .select-member-hint {
+      text-align: center;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      letter-spacing: 2px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="binary-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <div class="page-wrapper">
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon">🛸</span>
+        <h1>VOID.LOG</h1>
+        <div class="tagline">// SPACE HACKER CHRONICLES</div>
+      </div>
+
+      <div class="sidebar-status">
+        <span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">— Navigation</div>
+        <a href="index.html" class="nav-link"><span class="nav-icon">⌂</span> Home</a>
+        <a href="projects.html" class="nav-link"><span class="nav-icon">◈</span> Projects <span class="nav-badge">7</span></a>
+        <a href="posts.html" class="nav-link"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">12</span></a>
+        <a href="archive.html" class="nav-link"><span class="nav-icon">◫</span> Archive</a>
+        <a href="tags.html" class="nav-link"><span class="nav-icon">⌗</span> Tags</a>
+
+        <div class="nav-section-label" style="margin-top:12px">— Team</div>
+        <a href="about.html" class="nav-link active"><span class="nav-icon">◈</span> About Us</a>
+        <a href="member-1.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Ghost_Zero</a>
+        <a href="member-2.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Cipher_X</a>
+        <a href="member-3.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Orion_77</a>
+        <a href="member-4.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Nova_R3D</a>
+
+        <div class="nav-section-label" style="margin-top:12px">— System</div>
+        <a href="contact.html" class="nav-link"><span class="nav-icon">◌</span> Contact</a>
+        <a href="rss.xml" class="nav-link"><span class="nav-icon">◎</span> RSS Feed</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="version">v2.4.1-ALPHA</div>
+        <div>Last commit: <span style="color:var(--green)">2h ago</span></div>
+        <div style="margin-top:4px">Uptime: 99.8%</div>
+      </div>
+    </aside>
+
+    <!-- ══ MAIN ══ -->
+    <main class="main-content">
+      <div class="page-header animate-in">
+        <div class="breadcrumb">VOID.LOG // ABOUT US</div>
+        <h2 class="glitch" data-text="THE CREW">THE CREW</h2>
+        <div class="subtitle">// Four operators. One signal. Infinite curiosity.</div>
+      </div>
+
+      <!-- Intro Panel -->
+      <div class="about-intro animate-in">
+        <div class="about-intro-text">
+          <h2>WHO WE ARE</h2>
+          <p>
+            We are a team of engineers, hackers, and space enthusiasts united
+            by a single drive: to push the boundaries of what's computationally
+            possible and broadcast the results into the void.
+          </p>
+          <p style="margin-top:12px">
+            From exploiting satellite protocols to building distributed ML
+            systems that map the cosmos, our work lives at the intersection of
+            computer science, astrophysics, and pure curiosity. This blog is
+            our mission log.
+          </p>
+          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
+            <a href="projects.html" class="btn btn-primary">◈ Our Projects</a>
+            <a href="posts.html" class="btn btn-outline">◉ Read Posts</a>
+          </div>
+        </div>
+
+        <div class="about-mission-items">
+          <div class="mission-item">
+            <span class="mission-icon">🔬</span>
+            <div class="mission-text">
+              <h4>RESEARCH</h4>
+              <p>Deep technical investigations at the edges of space and systems security.</p>
+            </div>
+          </div>
+          <div class="mission-item">
+            <span class="mission-icon">🛰️</span>
+            <div class="mission-text">
+              <h4>SPACE TECH</h4>
+              <p>Real amateur radio, SDR, satellite interception, and orbital mechanics.</p>
+            </div>
+          </div>
+          <div class="mission-item">
+            <span class="mission-icon">⚙️</span>
+            <div class="mission-text">
+              <h4>BUILD & HACK</h4>
+              <p>From FPGA cores to AI pipelines — we build everything from first principles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="section-title">Team Profiles</div>
+      <div class="select-member-hint">// SELECT AN OPERATOR TO VIEW FULL PROFILE</div>
+
+      <div class="team-grid">
+
+        <a class="member-card animate-in" href="member-1.html">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-bg"></div>
+            <div class="member-ring"></div>
+            <img src="avatar1.png" alt="Ghost_Zero avatar" />
+          </div>
+          <div class="member-info">
+            <div class="member-codename">OPERATOR_01</div>
+            <div class="member-name">Ghost_Zero</div>
+            <div class="member-role">Systems Hacker &amp; RF Engineer</div>
+            <div class="member-tags">
+              <span class="member-tag">EXPLOIT DEV</span>
+              <span class="member-tag">SDR</span>
+              <span class="member-tag">LOW LEVEL</span>
+            </div>
+          </div>
+          <div class="member-footer">
+            <span>VIEW PROFILE</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a class="member-card animate-in" href="member-2.html">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-bg"></div>
+            <div class="member-ring"></div>
+            <img src="avatar2.png" alt="Cipher_X avatar" />
+          </div>
+          <div class="member-info">
+            <div class="member-codename">OPERATOR_02</div>
+            <div class="member-name">Cipher_X</div>
+            <div class="member-role">Cryptographer &amp; AI Researcher</div>
+            <div class="member-tags">
+              <span class="member-tag">CRYPTOGRAPHY</span>
+              <span class="member-tag">ML/AI</span>
+              <span class="member-tag">MATH</span>
+            </div>
+          </div>
+          <div class="member-footer">
+            <span>VIEW PROFILE</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a class="member-card animate-in" href="member-3.html">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-bg"></div>
+            <div class="member-ring"></div>
+            <img src="avatar3.png" alt="Orion_77 avatar" />
+          </div>
+          <div class="member-info">
+            <div class="member-codename">OPERATOR_03</div>
+            <div class="member-name">Orion_77</div>
+            <div class="member-role">Hardware Engineer &amp; Astrophysics</div>
+            <div class="member-tags">
+              <span class="member-tag">FPGA</span>
+              <span class="member-tag">EMBEDDED</span>
+              <span class="member-tag">ORBITAL</span>
+            </div>
+          </div>
+          <div class="member-footer">
+            <span>VIEW PROFILE</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <a class="member-card animate-in" href="member-4.html">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-bg"></div>
+            <div class="member-ring"></div>
+            <img src="avatar4.png" alt="Nova_R3D avatar" />
+          </div>
+          <div class="member-info">
+            <div class="member-codename">OPERATOR_04</div>
+            <div class="member-name">Nova_R3D</div>
+            <div class="member-role">Security Researcher &amp; Red Team</div>
+            <div class="member-tags">
+              <span class="member-tag">RED TEAM</span>
+              <span class="member-tag">VULN RESEARCH</span>
+              <span class="member-tag">OSINT</span>
+            </div>
+          </div>
+          <div class="member-footer">
+            <span>VIEW PROFILE</span>
+            <span>→</span>
+          </div>
+        </a>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

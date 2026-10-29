@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOID.LOG — Space Hacker Blog</title>
+  <meta name="description" content="VOID.LOG: A space-themed hacker blog documenting project completions, computer science experiments, and team dispatches from the digital frontier." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="binary-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <div class="page-wrapper">
+    <!-- ══ SIDEBAR ══ -->
+    <aside class="sidebar">
+      <div class="sidebar-logo">
+        <span class="logo-icon">🛸</span>
+        <h1>VOID.LOG</h1>
+        <div class="tagline">// SPACE HACKER CHRONICLES</div>
+      </div>
+
+      <div class="sidebar-status">
+        <span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">— Navigation</div>
+        <a href="index.html" class="nav-link">
+          <span class="nav-icon">⌂</span> Home
+        </a>
+        <a href="projects.html" class="nav-link">
+          <span class="nav-icon">◈</span> Projects
+          <span class="nav-badge">7</span>
+        </a>
+        <a href="posts.html" class="nav-link">
+          <span class="nav-icon">◉</span> Blog Posts
+          <span class="nav-badge">12</span>
+        </a>
+        <a href="archive.html" class="nav-link">
+          <span class="nav-icon">◫</span> Archive
+        </a>
+        <a href="tags.html" class="nav-link">
+          <span class="nav-icon">⌗</span> Tags
+        </a>
+
+        <div class="nav-section-label" style="margin-top:12px">— Team</div>
+        <a href="about.html" class="nav-link">
+          <span class="nav-icon">◈</span> About Us
+        </a>
+        <a href="member-1.html" class="nav-link" style="padding-left:36px;font-size:0.7rem">
+          <span class="nav-icon">▸</span> Ghost_Zero
+        </a>
+        <a href="member-2.html" class="nav-link" style="padding-left:36px;font-size:0.7rem">
+          <span class="nav-icon">▸</span> Cipher_X
+        </a>
+        <a href="member-3.html" class="nav-link" style="padding-left:36px;font-size:0.7rem">
+          <span class="nav-icon">▸</span> Orion_77
+        </a>
+        <a href="member-4.html" class="nav-link" style="padding-left:36px;font-size:0.7rem">
+          <span class="nav-icon">▸</span> Nova_R3D
+        </a>
+
+        <div class="nav-section-label" style="margin-top:12px">— System</div>
+        <a href="contact.html" class="nav-link">
+          <span class="nav-icon">◌</span> Contact
+        </a>
+        <a href="rss.xml" class="nav-link">
+          <span class="nav-icon">◎</span> RSS Feed
+        </a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <div class="version">v2.4.1-ALPHA</div>
+        <div>Last commit: <span style="color:var(--green)">2h ago</span></div>
+        <div style="margin-top:4px">Uptime: 99.8%</div>
+      </div>
+    </aside>
+
+    <!-- ══ MAIN ══ -->
+    <main class="main-content">
+      <!-- Hero -->
+      <div class="hero-banner animate-in">
+        <div class="hero-eyebrow">// LATEST TRANSMISSION</div>
+        <h2>
+          <span class="glitch" data-text="HACKING">HACKING</span> THE
+          <span>COSMOS</span>
+        </h2>
+        <p>
+          A collective of space-obsessed engineers and hackers documenting
+          their journey through code, systems, and the universe. Every project
+          a new orbit. Every post a signal from deep space.
+        </p>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <a href="projects.html" class="btn btn-primary">◈ View Projects</a>
+          <a href="about.html" class="btn btn-outline">◌ Meet the Crew</a>
+        </div>
+      </div>
+
+      <!-- Terminal Block -->
+      <div class="terminal-box animate-in">
+        <div class="terminal-bar">
+          <div class="terminal-dot red"></div>
+          <div class="terminal-dot yellow"></div>
+          <div class="terminal-dot green"></div>
+          <span class="terminal-title">VOID.LOG — TERMINAL v2.4.1</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line dim">// SYSTEM BOOT SEQUENCE</div>
+          <div class="terminal-line" data-typewriter="INITIALIZING VOID.LOG NODE_01..." data-delay="200"></div>
+          <div class="terminal-line dim" data-typewriter="[OK] Loading project database..." data-delay="900"></div>
+          <div class="terminal-line dim" data-typewriter="[OK] Syncing team profiles..." data-delay="1400"></div>
+          <div class="terminal-line" data-typewriter="[OK] 7 projects online. 12 posts indexed." data-delay="1900"></div>
+          <div class="terminal-line bright cursor-blink" data-typewriter="READY. Welcome to the void." data-delay="2500"></div>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-bar">
+        <div class="stat-card">
+          <span class="stat-value" data-target="7">0</span>
+          <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-target="12">0</span>
+          <span class="stat-label">Blog Posts</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-target="4">0</span>
+          <span class="stat-label">Team Members</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-target="3">0</span>
+          <span class="stat-label">Active Missions</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value" data-target="99">0</span>
+          <span class="stat-label">Uptime %</span>
+        </div>
+      </div>
+
+      <!-- Latest Posts -->
+      <div class="section-title">Latest Transmissions</div>
+      <div class="post-grid">
+
+        <a class="post-card" href="posts.html">
+          <div class="post-card-header">
+            <div class="post-tag tag-space">SPACE</div>
+            <h3>Mapping Dark Matter with Custom ML Pipeline</h3>
+          </div>
+          <div class="post-card-body">
+            <p>We trained a neural network on gravitational lensing data to visualize unseen mass concentrations across deep-field images from the telescope array.</p>
+          </div>
+          <div class="post-card-footer">
+            <span>2026-10-22 · Ghost_Zero</span>
+            <span class="read-more">READ_MORE →</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="posts.html">
+          <div class="post-card-header">
+            <div class="post-tag tag-hack">HACK</div>
+            <h3>Reverse Engineering a Satellite Protocol</h3>
+          </div>
+          <div class="post-card-body">
+            <p>Deep-dive into SDR signal capture, BPSK demodulation, and how we eventually decoded telemetry frames from a low-Earth orbit satellite.</p>
+          </div>
+          <div class="post-card-footer">
+            <span>2026-10-18 · Cipher_X</span>
+            <span class="read-more">READ_MORE →</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="posts.html">
+          <div class="post-card-header">
+            <div class="post-tag tag-project">PROJECT</div>
+            <h3>Project NEBULA — Phase 1 Complete</h3>
+          </div>
+          <div class="post-card-body">
+            <p>Full writeup on the completion of our distributed sensor mesh for atmospheric monitoring. Three months, two hardware revisions, countless late nights.</p>
+          </div>
+          <div class="post-card-footer">
+            <span>2026-10-10 · Orion_77</span>
+            <span class="read-more">READ_MORE →</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="posts.html">
+          <div class="post-card-header">
+            <div class="post-tag tag-research">RESEARCH</div>
+            <h3>Zero-Day in Space Telemetry Systems</h3>
+          </div>
+          <div class="post-card-body">
+            <p>Responsible disclosure writeup on vulnerabilities we found in commercial telemetry ground station software. Patched. Story can finally be told.</p>
+          </div>
+          <div class="post-card-footer">
+            <span>2026-09-30 · Nova_R3D</span>
+            <span class="read-more">READ_MORE →</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="posts.html">
+          <div class="post-card-header">
+            <div class="post-tag tag-hack">HACK</div>
+            <h3>Building a RISC-V CPU from Scratch in FPGA</h3>
+          </div>
+          <div class="post-card-body">
+            <p>How we implemented a minimal 32-bit RISC-V core in VHDL, ran it on a Xilinx board, and booted a tiny embedded OS on it.</p>
+          </div>
+          <div class="post-card-footer">
+            <span>2026-09-14 · Ghost_Zero</span>
+            <span class="read-more">READ_MORE →</span>
+          </div>
+        </a>
+
+        <a class="post-card" href="posts.html">
+          <div class="post-card-header">
+            <div class="post-tag tag-space">SPACE</div>
+            <h3>Our First Contact with Amateur Deep Space Net</h3>
+          </div>
+          <div class="post-card-body">
+            <p>Joining the amateur deep space network and receiving our first genuine signal bounce from beyond the Moon. What we heard and how we did it.</p>
+          </div>
+          <div class="post-card-footer">
+            <span>2026-08-28 · Orion_77</span>
+            <span class="read-more">READ_MORE →</span>
+          </div>
+        </a>
+
+      </div><!-- /post-grid -->
+
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>

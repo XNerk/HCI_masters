@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cipher_X — VOID.LOG</title>
+  <meta name="description" content="Cipher_X — Cryptographer and AI Researcher at VOID.LOG. Specializes in post-quantum cryptography and deep learning for space data." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .contrib-heatmap { display:grid; grid-template-columns:repeat(26,1fr); gap:3px; margin-top:10px; }
+    .heatmap-cell { aspect-ratio:1; border-radius:2px; background:rgba(0,229,255,0.07); transition:all .15s; }
+    .heatmap-cell:hover { transform:scale(1.3); }
+    .heatmap-cell.l1 { background:rgba(0,229,255,0.2); }
+    .heatmap-cell.l2 { background:rgba(0,229,255,0.4); }
+    .heatmap-cell.l3 { background:rgba(0,229,255,0.65); }
+    .heatmap-cell.l4 { background:rgba(0,229,255,0.9); box-shadow:0 0 6px rgba(0,229,255,0.4); }
+    .timeline { display:flex; flex-direction:column; gap:0; }
+    .timeline-item { display:flex; gap:18px; padding-bottom:24px; position:relative; }
+    .timeline-item::before { content:''; position:absolute; left:14px; top:24px; bottom:0; width:1px; background:var(--border); }
+    .timeline-item:last-child::before { display:none; }
+    .timeline-dot { width:30px; height:30px; border-radius:50%; background:var(--bg-card); border:2px solid var(--cyan); box-shadow:0 0 12px rgba(0,229,255,0.3); display:flex; align-items:center; justify-content:center; font-size:.75rem; flex-shrink:0; z-index:1; }
+    .timeline-body h4 { font-family:'Orbitron',sans-serif; font-size:.8rem; color:var(--text-primary); letter-spacing:1px; margin-bottom:4px; }
+    .timeline-body .tl-date { font-size:.62rem; color:var(--cyan); letter-spacing:2px; margin-bottom:4px; }
+    .timeline-body p { font-size:.72rem; color:var(--text-muted); line-height:1.7; }
+    .skill-badge-cyan { font-size:.65rem; padding:4px 12px; background:rgba(0,229,255,0.08); border:1px solid rgba(0,229,255,0.25); border-radius:2px; color:var(--cyan); letter-spacing:1px; }
+    .progress-fill-cyan { background:linear-gradient(90deg,var(--cyan),var(--purple)) !important; }
+  </style>
+</head>
+<body>
+  <canvas id="binary-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><span class="logo-icon">🛸</span><h1>VOID.LOG</h1><div class="tagline">// SPACE HACKER CHRONICLES</div></div>
+      <div class="sidebar-status"><span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01</div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">— Navigation</div>
+        <a href="index.html" class="nav-link"><span class="nav-icon">⌂</span> Home</a>
+        <a href="projects.html" class="nav-link"><span class="nav-icon">◈</span> Projects <span class="nav-badge">7</span></a>
+        <a href="posts.html" class="nav-link"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">12</span></a>
+        <a href="archive.html" class="nav-link"><span class="nav-icon">◫</span> Archive</a>
+        <a href="tags.html" class="nav-link"><span class="nav-icon">⌗</span> Tags</a>
+        <div class="nav-section-label" style="margin-top:12px">— Team</div>
+        <a href="about.html" class="nav-link"><span class="nav-icon">◈</span> About Us</a>
+        <a href="member-1.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Ghost_Zero</a>
+        <a href="member-2.html" class="nav-link active" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Cipher_X</a>
+        <a href="member-3.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Orion_77</a>
+        <a href="member-4.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Nova_R3D</a>
+        <div class="nav-section-label" style="margin-top:12px">— System</div>
+        <a href="contact.html" class="nav-link"><span class="nav-icon">◌</span> Contact</a>
+        <a href="rss.xml" class="nav-link"><span class="nav-icon">◎</span> RSS Feed</a>
+      </nav>
+      <div class="sidebar-footer"><div class="version">v2.4.1-ALPHA</div><div>Last commit: <span style="color:var(--green)">2h ago</span></div><div style="margin-top:4px">Uptime: 99.8%</div></div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header animate-in">
+        <div class="breadcrumb">VOID.LOG // ABOUT US // OPERATOR_02</div>
+        <h2 style="color:var(--cyan);text-shadow:0 0 20px rgba(0,229,255,0.4)">CIPHER_X</h2>
+        <div class="subtitle">// Cryptographer &amp; AI Researcher</div>
+      </div>
+
+      <div class="member-hero animate-in" style="border-color:rgba(0,229,255,0.25)">
+        <div class="member-hero-avatar">
+          <img src="avatar2.png" alt="Cipher_X" style="border-color:rgba(0,229,255,0.6);box-shadow:0 0 40px rgba(0,229,255,0.3)" />
+          <div class="member-hero-ring" style="border-color:rgba(0,229,255,0.3)"></div>
+        </div>
+        <div class="member-hero-info">
+          <div class="codename" style="color:var(--cyan)">// OPERATOR_02 · CIPHER_X</div>
+          <h2>Cipher_X</h2>
+          <div class="role" style="color:var(--cyan)">Cryptographer &amp; AI Researcher</div>
+          <p class="bio">
+            Cipher_X lives at the crossroads of advanced mathematics, cryptographic theory, and machine
+            learning. With a background in post-quantum cryptography research and a passion for applying
+            deep learning to astrophysical datasets, she brings analytical rigor to every mission the
+            crew undertakes. When not proving theorems, she's training models on telescope data.
+          </p>
+          <div class="skills-list">
+            <span class="skill-badge-cyan">Post-Quantum Crypto</span>
+            <span class="skill-badge-cyan">PyTorch / JAX</span>
+            <span class="skill-badge-cyan">Abstract Algebra</span>
+            <span class="skill-badge-cyan">Python / Rust</span>
+            <span class="skill-badge-cyan">Graph Neural Nets</span>
+            <span class="skill-badge-cyan">ZK Proofs</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats-bar" style="grid-template-columns:repeat(4,1fr);margin-bottom:28px">
+        <div class="stat-card"><span class="stat-value" data-target="31">0</span><span class="stat-label">Posts Written</span></div>
+        <div class="stat-card"><span class="stat-value" data-target="4">0</span><span class="stat-label">Projects Led</span></div>
+        <div class="stat-card"><span class="stat-value" data-target="2">0</span><span class="stat-label">Papers Published</span></div>
+        <div class="stat-card"><span class="stat-value" data-target="1">0</span><span class="stat-label">Patent Pending</span></div>
+      </div>
+
+      <div class="section-title">Activity Heatmap</div>
+      <div class="card" style="margin-bottom:28px">
+        <div style="font-size:.65rem;color:var(--text-muted);letter-spacing:2px;margin-bottom:10px">COMMITS &amp; POSTS — LAST 26 WEEKS</div>
+        <div class="contrib-heatmap" id="heatmap-2"></div>
+      </div>
+
+      <div class="section-title">Skill Proficiency</div>
+      <div class="card" style="margin-bottom:28px">
+        <div style="display:grid;gap:14px">
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>Cryptography</span><span style="color:var(--cyan)">98%</span></div>
+            <div class="progress-bar"><div class="progress-fill progress-fill-cyan" style="width:98%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>Machine Learning</span><span style="color:var(--cyan)">91%</span></div>
+            <div class="progress-bar"><div class="progress-fill progress-fill-cyan" style="width:91%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>Mathematics</span><span style="color:var(--cyan)">95%</span></div>
+            <div class="progress-bar"><div class="progress-fill progress-fill-cyan" style="width:95%"></div></div>
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--text-muted);margin-bottom:5px"><span>Systems Security</span><span style="color:var(--cyan)">70%</span></div>
+            <div class="progress-bar"><div class="progress-fill progress-fill-cyan" style="width:70%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-title">Mission Log</div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">🧠</div>
+          <div class="timeline-body">
+            <div class="tl-date">OCT 2026</div>
+            <h4>Dark Matter ML Pipeline</h4>
+            <p>Led the AI development for mapping dark matter concentrations via gravitational lensing analysis.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🔐</div>
+          <div class="timeline-body">
+            <div class="tl-date">JUN 2026</div>
+            <h4>Post-Quantum Protocol Draft</h4>
+            <p>Submitted a research paper on lattice-based authentication for space telemetry systems.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">📊</div>
+          <div class="timeline-body">
+            <div class="tl-date">FEB 2026</div>
+            <h4>Telescope Data Classifier</h4>
+            <p>Trained a GNN on FITS telescope data to classify galaxy morphologies with 94% accuracy.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">🚀</div>
+          <div class="timeline-body">
+            <div class="tl-date">JAN 2026</div>
+            <h4>Joined VOID.LOG</h4>
+            <p>Brought on as the crew's resident mathematician and ML architect.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:32px">
+        <a href="about.html" class="btn btn-outline">← Back to Team</a>
+      </div>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    const heatmap = document.getElementById('heatmap-2');
+    if (heatmap) {
+      for (let i = 0; i < 26 * 7; i++) {
+        const cell = document.createElement('div');
+        const r = Math.random();
+        const level = r > 0.8 ? 'l4' : r > 0.6 ? 'l3' : r > 0.4 ? 'l2' : r > 0.2 ? 'l1' : '';
+        cell.className = 'heatmap-cell ' + level;
+        heatmap.appendChild(cell);
+      }
+    }
+  </script>
+</body>
+</html>

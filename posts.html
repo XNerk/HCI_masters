@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog Posts — VOID.LOG</title>
+  <meta name="description" content="All VOID.LOG blog posts — technical writeups on space hacking, CS theory, project completions, and research from the crew." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .search-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 10px 16px;
+      transition: border-color 0.2s;
+    }
+    .search-bar:focus-within { border-color: var(--border-bright); }
+    .search-bar span { color: var(--green); font-size: 0.9rem; }
+    .search-bar input {
+      flex: 1;
+      background: none;
+      border: none;
+      outline: none;
+      color: var(--text-primary);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+    .search-bar input::placeholder { color: var(--text-muted); }
+
+    .post-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 20px 24px;
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 20px;
+      align-items: start;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+      margin-bottom: 12px;
+      cursor: pointer;
+    }
+    .post-row:hover {
+      border-color: var(--border-bright);
+      box-shadow: 0 0 24px rgba(0,255,65,0.07);
+      transform: translateX(4px);
+    }
+    .post-row-number {
+      font-family: 'VT323', monospace;
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      min-width: 40px;
+    }
+    .post-row-body h3 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .post-row-body p {
+      font-size: 0.73rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .post-row-meta {
+      text-align: right;
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      white-space: nowrap;
+    }
+    .post-row-meta .author { color: var(--green); }
+  </style>
+</head>
+<body>
+  <canvas id="binary-canvas"></canvas>
+  <div class="scanlines"></div>
+
+  <div class="page-wrapper">
+    <aside class="sidebar">
+      <div class="sidebar-logo"><span class="logo-icon">🛸</span><h1>VOID.LOG</h1><div class="tagline">// SPACE HACKER CHRONICLES</div></div>
+      <div class="sidebar-status"><span class="status-dot"></span>SYSTEM ONLINE &nbsp;|&nbsp; NODE_01</div>
+      <nav class="sidebar-nav">
+        <div class="nav-section-label">— Navigation</div>
+        <a href="index.html" class="nav-link"><span class="nav-icon">⌂</span> Home</a>
+        <a href="projects.html" class="nav-link"><span class="nav-icon">◈</span> Projects <span class="nav-badge">7</span></a>
+        <a href="posts.html" class="nav-link active"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">12</span></a>
+        <a href="archive.html" class="nav-link"><span class="nav-icon">◫</span> Archive</a>
+        <a href="tags.html" class="nav-link"><span class="nav-icon">⌗</span> Tags</a>
+        <div class="nav-section-label" style="margin-top:12px">— Team</div>
+        <a href="about.html" class="nav-link"><span class="nav-icon">◈</span> About Us</a>
+        <a href="member-1.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Ghost_Zero</a>
+        <a href="member-2.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Cipher_X</a>
+        <a href="member-3.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Orion_77</a>
+        <a href="member-4.html" class="nav-link" style="padding-left:36px;font-size:0.7rem"><span class="nav-icon">▸</span> Nova_R3D</a>
+        <div class="nav-section-label" style="margin-top:12px">— System</div>
+        <a href="contact.html" class="nav-link"><span class="nav-icon">◌</span> Contact</a>
+        <a href="rss.xml" class="nav-link"><span class="nav-icon">◎</span> RSS Feed</a>
+      </nav>
+      <div class="sidebar-footer"><div class="version">v2.4.1-ALPHA</div><div>Last commit: <span style="color:var(--green)">2h ago</span></div><div style="margin-top:4px">Uptime: 99.8%</div></div>
+    </aside>
+
+    <main class="main-content">
+      <div class="page-header animate-in">
+        <div class="breadcrumb">VOID.LOG // BLOG POSTS</div>
+        <h2 class="glitch" data-text="TRANSMISSIONS">TRANSMISSIONS</h2>
+        <div class="subtitle">// All posts, writeups, and technical dispatches — indexed and searchable</div>
+      </div>
+
+      <!-- Search -->
+      <div class="search-bar animate-in">
+        <span>⌕</span>
+        <input type="text" id="search-input" placeholder="Search transmissions..." oninput="searchPosts()" />
+      </div>
+
+      <!-- Tag filter -->
+      <div class="animate-in" style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px">
+        <span style="font-size:0.62rem;color:var(--text-muted);letter-spacing:2px;align-self:center">FILTER:</span>
+        <span class="post-tag tag-space" style="cursor:pointer" onclick="tagFilter('space')">SPACE</span>
+        <span class="post-tag tag-hack" style="cursor:pointer" onclick="tagFilter('hack')">HACK</span>
+        <span class="post-tag tag-project" style="cursor:pointer" onclick="tagFilter('project')">PROJECT</span>
+        <span class="post-tag tag-research" style="cursor:pointer" onclick="tagFilter('research')">RESEARCH</span>
+        <span class="post-tag" style="cursor:pointer;border:1px solid var(--border);color:var(--text-muted)" onclick="tagFilter('all')">ALL</span>
+      </div>
+
+      <div id="post-rows">
+
+        <div class="post-row animate-in" data-tag="space" data-title="mapping dark matter">
+          <div class="post-row-number">01</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-space">SPACE</span></div>
+            <h3>Mapping Dark Matter with Custom ML Pipeline</h3>
+            <p>We trained a neural network on gravitational lensing data to visualize unseen mass concentrations across deep-field images. Full pipeline: data ingestion → preprocessing → GNN → visualization.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-10-22</div>
+            <div class="author">Ghost_Zero</div>
+            <div>12 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="hack" data-title="satellite protocol">
+          <div class="post-row-number">02</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-hack">HACK</span></div>
+            <h3>Reverse Engineering a Satellite Protocol</h3>
+            <p>SDR signal capture, BPSK demodulation, and how we eventually decoded telemetry frames from a low-Earth orbit satellite using GNU Radio and a homemade LNA.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-10-18</div>
+            <div class="author">Cipher_X</div>
+            <div>18 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="project" data-title="nebula phase 1">
+          <div class="post-row-number">03</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-project">PROJECT</span></div>
+            <h3>Project NEBULA — Phase 1 Complete</h3>
+            <p>Full writeup on the completion of our distributed sensor mesh. Three months, two hardware revisions, countless late nights. Architecture, lessons learned, and what's next.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-10-10</div>
+            <div class="author">Orion_77</div>
+            <div>22 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="research" data-title="zero day telemetry">
+          <div class="post-row-number">04</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-research">RESEARCH</span></div>
+            <h3>Zero-Day in Space Telemetry Systems (CVE-2026-4481)</h3>
+            <p>Responsible disclosure writeup on the RCE vulnerability we found in commercial ground station software. Full technical breakdown now that the 90-day embargo is lifted.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-09-30</div>
+            <div class="author">Nova_R3D</div>
+            <div>25 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="hack" data-title="risc-v fpga">
+          <div class="post-row-number">05</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-hack">HACK</span></div>
+            <h3>Building a RISC-V CPU from Scratch in FPGA</h3>
+            <p>How we implemented a minimal 32-bit RISC-V core in VHDL, synthesized it on a Xilinx board, and ran a tiny RTOS on it. Dive into the pipeline stages and bus architecture.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-09-14</div>
+            <div class="author">Ghost_Zero</div>
+            <div>31 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="space" data-title="deep space amateur">
+          <div class="post-row-number">06</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-space">SPACE</span></div>
+            <h3>Our First Contact with Amateur Deep Space Net</h3>
+            <p>Joining the amateur deep space network and receiving our first genuine signal bounce from beyond the Moon. What we heard and how we built the receiving rig for under $800.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-08-28</div>
+            <div class="author">Orion_77</div>
+            <div>14 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="research" data-title="post quantum kyber">
+          <div class="post-row-number">07</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-research">RESEARCH</span></div>
+            <h3>Implementing CRYSTALS-Kyber for Space Telemetry Auth</h3>
+            <p>A deep dive into post-quantum key exchange and why classical asymmetric cryptography is fundamentally broken for long-haul space communications in the quantum era.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-08-10</div>
+            <div class="author">Cipher_X</div>
+            <div>28 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="hack" data-title="osint satellite orbital">
+          <div class="post-row-number">08</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-hack">HACK</span></div>
+            <h3>OSINT Mapping of Commercial Orbital Assets</h3>
+            <p>Passive methodology for tracking satellite positions using open data, TLE feeds, and signal timing alone. No active interrogation, no illegal access — just smart analysis.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-07-22</div>
+            <div class="author">Nova_R3D</div>
+            <div>16 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="project" data-title="cubesat obc design">
+          <div class="post-row-number">09</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-project">PROJECT</span></div>
+            <h3>CubeSat OBC Design — Rev 3 Progress Update</h3>
+            <p>PCB revision 3 of our on-board computer is in fabrication. This post covers the EPS design, the radiation mitigation strategies, and the firmware architecture choices.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-07-05</div>
+            <div class="author">Orion_77</div>
+            <div>20 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="space" data-title="galaxy morphology classifier">
+          <div class="post-row-number">10</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-space">SPACE</span></div>
+            <h3>Galaxy Morphology Classifier — 94% Accuracy</h3>
+            <p>Training a Graph Neural Network on FITS telescope data to classify spiral, elliptical, and irregular galaxies. Dataset curation, architecture decisions, and failure modes.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-06-18</div>
+            <div class="author">Cipher_X</div>
+            <div>23 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="research" data-title="heap overflow rtos">
+          <div class="post-row-number">11</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-research">RESEARCH</span></div>
+            <h3>Finding CVE-2026-0317 — Heap Overflow in Embedded RTOS</h3>
+            <p>Full technical writeup on the heap overflow vulnerability discovered in a widely used embedded RTOS scheduler, including PoC, impact analysis, and patching timeline.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-05-30</div>
+            <div class="author">Ghost_Zero</div>
+            <div>19 min read</div>
+          </div>
+        </div>
+
+        <div class="post-row animate-in" data-tag="hack" data-title="gnu radio pipeline sdr">
+          <div class="post-row-number">12</div>
+          <div class="post-row-body">
+            <div style="margin-bottom:6px"><span class="post-tag tag-hack">HACK</span></div>
+            <h3>GNU Radio Pipelines for Beginners — A Practical Guide</h3>
+            <p>Everything we wish we knew before starting with software defined radio. From hardware selection to demodulation flowgraphs, this is the guide we needed when starting out.</p>
+          </div>
+          <div class="post-row-meta">
+            <div>2026-04-12</div>
+            <div class="author">Ghost_Zero</div>
+            <div>35 min read</div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    function searchPosts() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      document.querySelectorAll('#post-rows .post-row').forEach(row => {
+        const title = row.dataset.title || '';
+        const text = row.textContent.toLowerCase();
+        row.style.display = (text.includes(query) || title.includes(query)) ? 'grid' : 'none';
+      });
+    }
+
+    function tagFilter(tag) {
+      document.querySelectorAll('#post-rows .post-row').forEach(row => {
+        if (tag === 'all' || row.dataset.tag === tag) {
+          row.style.display = 'grid';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>
