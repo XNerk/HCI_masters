@@ -7,6 +7,14 @@
   <meta name="description" content="Lai Yan Cheng — Computer Networks and Security Student at UTM. Profile node on VOID.LOG." />
   <link rel="stylesheet" href="style.css" />
   <style>
+    /* Custom Yellow Theme Variables */
+    :root {
+      --yellow: #ffee00;
+      --yellow-glow: rgba(255, 238, 0, 0.4);
+      --yellow-bg: rgba(255, 238, 0, 0.08);
+      --yellow-border: rgba(255, 238, 0, 0.25);
+    }
+
     /* Dashboard & Cyber Card Layout */
     .dashboard-grid {
       display: grid;
@@ -17,7 +25,7 @@
 
     .card {
       background: var(--bg-card, #0a0d14);
-      border: 1px solid rgba(0, 229, 255, 0.18);
+      border: 1px solid var(--yellow-border);
       border-radius: 4px;
       padding: 22px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
@@ -30,14 +38,14 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--cyan, #00e5ff), transparent);
+      background: linear-gradient(90deg, var(--yellow), transparent);
     }
 
     .card-title {
       font-family: 'Orbitron', monospace, sans-serif;
       font-size: 0.85rem;
       letter-spacing: 1.5px;
-      color: var(--cyan, #00e5ff);
+      color: var(--yellow);
       margin-bottom: 18px;
       text-transform: uppercase;
       display: flex;
@@ -51,9 +59,9 @@
       align-items: center;
       gap: 24px;
       margin-bottom: 24px;
-      background: rgba(0, 229, 255, 0.03);
+      background: rgba(255, 238, 0, 0.03);
       padding: 24px;
-      border: 1px solid rgba(0, 229, 255, 0.2);
+      border: 1px solid var(--yellow-border);
       border-radius: 4px;
       position: relative;
     }
@@ -62,8 +70,8 @@
       width: 100px;
       height: 100px;
       border-radius: 4px;
-      border: 2px solid var(--cyan, #00e5ff);
-      box-shadow: 0 0 20px rgba(0, 229, 255, 0.3);
+      border: 2px solid var(--yellow);
+      box-shadow: 0 0 20px var(--yellow-glow);
       object-fit: cover;
     }
 
@@ -77,9 +85,9 @@
     .meta-tag {
       font-size: 0.7rem;
       padding: 5px 12px;
-      background: rgba(0, 229, 255, 0.08);
-      border: 1px solid rgba(0, 229, 255, 0.25);
-      color: #00e5ff;
+      background: var(--yellow-bg);
+      border: 1px solid var(--yellow-border);
+      color: var(--yellow);
       border-radius: 2px;
       display: inline-flex;
       align-items: center;
@@ -98,23 +106,23 @@
     }
 
     .scan-icon {
-      color: var(--cyan, #00e5ff);
+      color: var(--yellow);
       margin-right: 8px;
     }
 
     .status-foot {
       margin-top: 16px;
       padding-top: 10px;
-      border-top: 1px dashed rgba(0, 229, 255, 0.15);
+      border-top: 1px dashed rgba(255, 238, 0, 0.2);
       font-size: 0.65rem;
-      color: #00ff88;
+      color: var(--yellow);
       letter-spacing: 1.5px;
       font-family: monospace;
     }
 
     /* Learning Progress Bars */
     .learning-item {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .learning-header {
@@ -127,7 +135,7 @@
 
     .learning-status {
       font-size: 0.68rem;
-      color: var(--cyan, #00e5ff);
+      color: var(--yellow);
       font-family: monospace;
     }
 
@@ -141,8 +149,8 @@
 
     .progress-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #00e5ff, #805ad5);
-      box-shadow: 0 0 8px rgba(0, 229, 255, 0.5);
+      background: linear-gradient(90deg, #ffee00, #ffaa00);
+      box-shadow: 0 0 8px var(--yellow-glow);
     }
 
     /* Interest Modules Grid */
@@ -154,19 +162,19 @@
 
     .module-box {
       background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(0, 229, 255, 0.12);
+      border: 1px solid var(--yellow-border);
       padding: 14px;
       border-radius: 3px;
       transition: border-color 0.2s;
     }
 
     .module-box:hover {
-      border-color: rgba(0, 229, 255, 0.4);
+      border-color: rgba(255, 238, 0, 0.6);
     }
 
     .module-box .icon {
       font-size: 1.2rem;
-      color: var(--cyan, #00e5ff);
+      color: var(--yellow);
       margin-bottom: 6px;
     }
 
@@ -194,12 +202,12 @@
     .step-item {
       margin-bottom: 14px;
       padding-left: 12px;
-      border-left: 2px solid rgba(0, 229, 255, 0.3);
+      border-left: 2px solid var(--yellow-border);
     }
 
     .step-item h5 {
       font-size: 0.78rem;
-      color: #00e5ff;
+      color: var(--yellow);
       margin: 0 0 4px 0;
       font-family: 'Orbitron', sans-serif;
     }
@@ -246,7 +254,7 @@
       </nav>
       <div class="sidebar-footer">
         <div class="version">v2.4.1-ALPHA</div>
-        <div>Last commit: <span style="color:var(--green, #00ff88)">2h ago</span></div>
+        <div>Last commit: <span style="color:var(--yellow)">2h ago</span></div>
         <div style="margin-top:4px">Uptime: 99.8%</div>
       </div>
     </aside>
@@ -255,8 +263,8 @@
     <main class="main-content">
       <div class="page-header animate-in">
         <div class="breadcrumb">VOID.LOG // ABOUT US // OPERATOR_02</div>
-        <h2 style="color:var(--cyan, #00e5ff); text-shadow:0 0 20px rgba(0,229,255,0.4)">LAI YAN CHENG</h2>
-        <div class="subtitle">// Computer Networks &amp; Security Specialist</div>
+        <h2 style="color:var(--yellow); text-shadow:0 0 20px var(--yellow-glow)">LAI YAN CHENG</h2>
+        <div class="subtitle" style="color:var(--yellow)">// Computer Networks &amp; Security Student</div>
       </div>
 
       <!-- Member Header Banner -->
@@ -266,13 +274,12 @@
         </div>
         <div class="profile-details">
           <h3 style="margin:0; font-family:'Orbitron', sans-serif; color:#fff; font-size:1.2rem;">OPERATOR // LAI YAN CHENG</h3>
-          <div style="color:var(--cyan, #00e5ff); font-size:0.78rem; letter-spacing:1px; margin-top:4px;">
+          <div style="color:var(--yellow); font-size:0.78rem; letter-spacing:1px; margin-top:4px;">
             UTM NETWORK &amp; SECURITY STUDENT
           </div>
           <div class="profile-meta-tags">
             <span class="meta-tag">📍 Kulai, Johor</span>
             <span class="meta-tag">📅 Born in 2006</span>
-            <span class="meta-tag">⚡ Systems &amp; C++ Developer</span>
           </div>
         </div>
       </div>
@@ -287,7 +294,6 @@
             <li><span class="scan-icon">🎓</span> UTM Computer Networks &amp; Security Student</li>
             <li><span class="scan-icon">📍</span> Origin: Kulai, Johor, Malaysia</li>
             <li><span class="scan-icon">📅</span> Born: 2006</li>
-            <li><span class="scan-icon">💻</span> Focus: C++ OOP, Assembly (MASM), &amp; Web Dev</li>
             <li><span class="scan-icon">🛡️</span> Domain: Network Infrastructure &amp; Security Protocols</li>
           </ul>
           <div class="status-foot">
@@ -295,14 +301,14 @@
           </div>
         </div>
 
-        <!-- Expanded Learning Progress Card -->
+        <!-- Currently Learning Card -->
         <div class="card">
           <div class="card-title"><span>▶</span> Currently Learning</div>
           
           <div class="learning-item">
             <div class="learning-header">
-              <span>Modular C++ OOP &amp; Data Structures</span>
-              <span class="learning-status">85% // Advanced</span>
+              <span>Computer Networks &amp; Security Protocols</span>
+              <span class="learning-status">85% // In Progress</span>
             </div>
             <div class="progress-bar-bg">
               <div class="progress-bar-fill" style="width: 85%;"></div>
@@ -311,8 +317,8 @@
 
           <div class="learning-item">
             <div class="learning-header">
-              <span>Web Development (HTML5 / CSS3 / JS)</span>
-              <span class="learning-status">75% // Building</span>
+              <span>Modular Programming &amp; Logic</span>
+              <span class="learning-status">75% // Advanced</span>
             </div>
             <div class="progress-bar-bg">
               <div class="progress-bar-fill" style="width: 75%;"></div>
@@ -321,8 +327,8 @@
 
           <div class="learning-item">
             <div class="learning-header">
-              <span>Computer Networks &amp; Security Protocols</span>
-              <span class="learning-status">65% // In Progress</span>
+              <span>x86 Assembly &amp; Low-Level Tracing</span>
+              <span class="learning-status">65% // Exploring</span>
             </div>
             <div class="progress-bar-bg">
               <div class="progress-bar-fill" style="width: 65%;"></div>
@@ -331,21 +337,11 @@
 
           <div class="learning-item">
             <div class="learning-header">
-              <span>x86 Assembly &amp; Low-Level Tracing</span>
-              <span class="learning-status">60% // Exploring</span>
+              <span>System Architecture &amp; DFDs</span>
+              <span class="learning-status">60% // Learning</span>
             </div>
             <div class="progress-bar-bg">
               <div class="progress-bar-fill" style="width: 60%;"></div>
-            </div>
-          </div>
-
-          <div class="learning-item">
-            <div class="learning-header">
-              <span>System Design (DFDs &amp; Database Architecture)</span>
-              <span class="learning-status">50% // Learning</span>
-            </div>
-            <div class="progress-bar-bg">
-              <div class="progress-bar-fill" style="width: 50%;"></div>
             </div>
           </div>
 
@@ -359,24 +355,24 @@
           <div class="card-title"><span>▶</span> Core Interest Modules</div>
           <div class="module-grid">
             <div class="module-box">
-              <div class="icon">💻</div>
-              <h5>Systems Programming</h5>
-              <p>C++ Modular Architecture, Pointers, Inheritance &amp; Composition</p>
-            </div>
-            <div class="module-box">
               <div class="icon">🌐</div>
               <h5>Networks</h5>
-              <p>TCP/IP Model, Packet Flow, Routing &amp; Network Security</p>
-            </div>
-            <div class="module-box">
-              <div class="icon">⚡</div>
-              <h5>Development Tools</h5>
-              <p>Visual Studio, Dev-C++, MASM, RStudio, AutoCAD</p>
+              <p>TCP/IP Model, Routing, Subnetting &amp; Protocols</p>
             </div>
             <div class="module-box">
               <div class="icon">🛡️</div>
-              <h5>Cyber Resilience</h5>
-              <p>Incident Response, Access Control, Token Security</p>
+              <h5>Cyber Security</h5>
+              <p>Network Resilience, Firewalls &amp; Token Security</p>
+            </div>
+            <div class="module-box">
+              <div class="icon">⚙️</div>
+              <h5>Systems</h5>
+              <p>Hardware Architecture, Assembly &amp; Low-Level Tracing</p>
+            </div>
+            <div class="module-box">
+              <div class="icon">📊</div>
+              <h5>Analysis Tools</h5>
+              <p>Data Specification, DFD Design &amp; Structured Workflows</p>
             </div>
           </div>
         </div>
@@ -390,12 +386,12 @@
               <p>Deepen understanding of packet analysis, firewalls, and enterprise network architecture at UTM.</p>
             </div>
             <div class="step-item">
-              <h5>02 / Full-Stack &amp; Software Systems</h5>
-              <p>Combine modular backend logic with clean responsive interfaces for practical web applications.</p>
+              <h5>02 / System Architecture Mastery</h5>
+              <p>Enhance system design workflows using process specifications and detailed data flow diagrams.</p>
             </div>
             <div class="step-item">
               <h5>03 / Low-Level Exploration</h5>
-              <p>Analyze binary execution and secure system memory management through assembly level exercises.</p>
+              <p>Analyze execution mechanics and secure system memory management through assembly level trace exercises.</p>
             </div>
           </div>
         </div>
@@ -403,7 +399,7 @@
       </div>
 
       <div style="margin-top:32px">
-        <a href="about.html" class="btn btn-outline">← Back to Team</a>
+        <a href="about.html" class="btn btn-outline" style="border-color:var(--yellow); color:var(--yellow)">← Back to Team</a>
       </div>
     </main>
   </div>
