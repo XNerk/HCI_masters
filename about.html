@@ -18,7 +18,7 @@
       gap: 32px;
       align-items: center;
     }
-    @media (max-width: 700px) { .about-intro { grid-template-columns: 1fr; } }
+    @media (max-width: 768px) { .about-intro { grid-template-columns: 1fr; padding: 22px; } }
 
     .about-intro-text h2 {
       font-family: 'Orbitron', sans-serif;
@@ -28,6 +28,20 @@
       text-shadow: 0 0 16px var(--green-glow);
       letter-spacing: 2px;
       margin-bottom: 14px;
+    }
+
+    /* Fixed Image Styling: perfectly contained, never exceeds borders */
+    .about-intro-text img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 16px rgba(0, 255, 65, 0.15);
+      margin: 14px 0;
+      display: block;
     }
 
     .about-intro-text p {
@@ -103,8 +117,8 @@
       <nav class="sidebar-nav">
         <div class="nav-section-label">— Navigation</div>
         <a href="index.html" class="nav-link"><span class="nav-icon">⌂</span> Home</a>
-        <a href="projects.html" class="nav-link"><span class="nav-icon">◈</span> Projects <span class="nav-badge">7</span></a>
-        <a href="posts.html" class="nav-link"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">12</span></a>
+        <a href="projects.html" class="nav-link"><span class="nav-icon">◈</span> Projects <span class="nav-badge">1</span></a>
+        <a href="posts.html" class="nav-link"><span class="nav-icon">◉</span> Blog Posts <span class="nav-badge">1</span></a>
 
         <div class="nav-section-label" style="margin-top:12px">— Team</div>
         <a href="about.html" class="nav-link active"><span class="nav-icon">◈</span> About Us</a>
@@ -116,7 +130,6 @@
 
         <div class="nav-section-label" style="margin-top:12px">— System</div>
         <a href="contact.html" class="nav-link"><span class="nav-icon">◌</span> Contact</a>
-       
       </nav>
 
       <div class="sidebar-footer">
@@ -131,14 +144,14 @@
       <div class="page-header animate-in">
         <div class="breadcrumb">VOID.LOG // ABOUT US</div>
         <h2 class="glitch" data-text="THE CREW">THE CREW</h2>
-        <div class="subtitle">// Four operators. One signal. Infinite curiosity.</div>
+        <div class="subtitle">// Five operators. One signal. Infinite curiosity.</div>
       </div>
 
       <!-- Intro Panel -->
       <div class="about-intro animate-in">
         <div class="about-intro-text">
           <h2>WHO WE ARE</h2>
-          <img src="pictures/group.jpg" alt="A descriptive caption of the picture">
+          <img src="pictures/group.jpg" alt="VOID.LOG Team Photo" />
           <p>
             We are a team of engineers, hackers, and space enthusiasts united
             by a single drive: to push the boundaries of what's computationally
@@ -187,11 +200,12 @@
 
       <div class="team-grid">
 
+        <!-- Member 1: Tinesh -->
         <a class="member-card animate-in" href="member-1.html">
           <div class="member-avatar-wrap">
             <div class="member-avatar-bg"></div>
             <div class="member-ring"></div>
-            <img src="T.jpg" alt="Ghost_Zero avatar" />
+            <img src="pictures/T.jpg" alt="Tinesh avatar" onerror="this.src='pictures/group.jpg'" />
           </div>
           <div class="member-info">
             <div class="member-codename">OPERATOR_01</div>
@@ -209,20 +223,21 @@
           </div>
         </a>
 
+        <!-- Member 2: Lai Yan Cheng -->
         <a class="member-card animate-in" href="member-2.html">
           <div class="member-avatar-wrap">
             <div class="member-avatar-bg"></div>
             <div class="member-ring"></div>
-            <img src="yc.jpeg" alt="Cipher_X avatar" />
+            <img src="pictures/yc.jpeg" alt="Lai Yan Cheng avatar" onerror="this.src='pictures/group.jpg'" />
           </div>
           <div class="member-info">
             <div class="member-codename">OPERATOR_02</div>
             <div class="member-name">Lai Yan Cheng</div>
-            <div class="member-role">Cryptographer &amp; AI Researcher</div>
+            <div class="member-role">Computer Networks &amp; Security</div>
             <div class="member-tags">
-              <span class="member-tag">CRYPTOGRAPHY</span>
-              <span class="member-tag">ML/AI</span>
-              <span class="member-tag">MATH</span>
+              <span class="member-tag">NETWORKS</span>
+              <span class="member-tag">SECURITY</span>
+              <span class="member-tag">SYSTEMS</span>
             </div>
           </div>
           <div class="member-footer">
@@ -231,62 +246,67 @@
           </div>
         </a>
 
+        <!-- Member 3: Dominic Mah -->
         <a class="member-card animate-in" href="member-3.html">
           <div class="member-avatar-wrap">
             <div class="member-avatar-bg"></div>
             <div class="member-ring"></div>
-            <img src="dom.jpeg" alt="Orion_77 avatar" />
+            <img src="pictures/dom.jpeg" alt="Dominic Mah avatar" onerror="this.src='pictures/group.jpg'" />
           </div>
           <div class="member-info">
             <div class="member-codename">OPERATOR_03</div>
             <div class="member-name">Dominic Mah</div>
+            <div class="member-role">Network &amp; Security Student</div>
+            <div class="member-tags">
+              <span class="member-tag">CYBERSECURITY</span>
+              <span class="member-tag">WIRESHARK</span>
+              <span class="member-tag">TCP/IP</span>
+            </div>
+          </div>
+          <div class="member-footer">
+            <span>VIEW PROFILE</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <!-- Member 4: Zuhairi -->
+        <a class="member-card animate-in" href="member-4.html">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-bg"></div>
+            <div class="member-ring"></div>
+            <img src="pictures/ZuhairiKMNS.jpeg" alt="Zuhairi avatar" onerror="this.src='pictures/group.jpg'" />
+          </div>
+          <div class="member-info">
+            <div class="member-codename">OPERATOR_04</div>
+            <div class="member-name">Zuhairi</div>
+            <div class="member-role">Security Researcher &amp; Red Team</div>
+            <div class="member-tags">
+              <span class="member-tag">RED TEAM</span>
+              <span class="member-tag">C++ / JAVA</span>
+              <span class="member-tag">OSINT</span>
+            </div>
+          </div>
+          <div class="member-footer">
+            <span>VIEW PROFILE</span>
+            <span>→</span>
+          </div>
+        </a>
+
+        <!-- Member 5: Damia -->
+        <a class="member-card animate-in" href="member-5.html">
+          <div class="member-avatar-wrap">
+            <div class="member-avatar-bg"></div>
+            <div class="member-ring"></div>
+            <img src="pictures/damia.jpeg" alt="Damia avatar" onerror="this.src='pictures/group.jpg'" />
+          </div>
+          <div class="member-info">
+            <div class="member-codename">OPERATOR_05</div>
+            <div class="member-name">Damia</div>
             <div class="member-role">Hardware Engineer &amp; Astrophysics</div>
             <div class="member-tags">
               <span class="member-tag">FPGA</span>
               <span class="member-tag">EMBEDDED</span>
               <span class="member-tag">ORBITAL</span>
-            </div>
-          </div>
-          <div class="member-footer">
-            <span>VIEW PROFILE</span>
-            <span>→</span>
-          </div>
-        </a>
-
-        <a class="member-card animate-in" href="member-4.html">
-          <div class="member-avatar-wrap">
-            <div class="member-avatar-bg"></div>
-            <div class="member-ring"></div>
-            <img src="ZuhairiKMNS.jpeg" alt="Nova_R3D avatar" />
-          </div>
-          <div class="member-info">
-            <div class="member-codename">OPERATOR_04</div>
-            <div class="member-name">Zuhairi</div>
-            <div class="member-role">AI Researcher &amp; Red Team</div>
-            <div class="member-tags">
-              <span class="member-tag">RED TEAM</span>
-            </div>
-          </div>
-          <div class="member-footer">
-            <span>VIEW PROFILE</span>
-            <span>→</span>
-          </div>
-        </a>
-
-         <a class="member-card animate-in" href="member-5.html">
-          <div class="member-avatar-wrap">
-            <div class="member-avatar-bg"></div>
-            <div class="member-ring"></div>
-            <img src="avatar2.png" alt="Cipher_X avatar" />
-          </div>
-          <div class="member-info">
-            <div class="member-codename">OPERATOR_05</div>
-            <div class="member-name">Damia</div>
-            <div class="member-role">Cryptographer &amp; AI Researcher</div>
-            <div class="member-tags">
-              <span class="member-tag">CRYPTOGRAPHY</span>
-              <span class="member-tag">ML/AI</span>
-              <span class="member-tag">MATH</span>
             </div>
           </div>
           <div class="member-footer">

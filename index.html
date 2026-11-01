@@ -6,6 +6,120 @@
   <title>VOID.LOG — Space Hacker Blog</title>
   <meta name="description" content="VOID.LOG: A space-themed hacker blog documenting project completions, computer science experiments, and team dispatches from the digital frontier." />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Styling for Who We Are section on Home page */
+    .about-intro {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 32px 36px;
+      margin-bottom: 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    @media (max-width: 768px) { .about-intro { grid-template-columns: 1fr; padding: 20px; } }
+
+    .about-intro-text h2 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--green);
+      text-shadow: 0 0 16px var(--green-glow);
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+
+    .about-intro-text img {
+      max-width: 100%;
+      width: 100%;
+      height: auto;
+      max-height: 280px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 16px rgba(0, 255, 65, 0.15);
+      margin: 14px 0;
+      display: block;
+    }
+
+    .about-intro-text p {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.85;
+    }
+
+    .about-mission-items { display: flex; flex-direction: column; gap: 14px; }
+
+    .mission-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      background: rgba(0,255,65,0.03);
+      transition: all 0.25s;
+    }
+
+    .mission-item:hover {
+      border-color: var(--border-bright);
+      background: rgba(0,255,65,0.06);
+    }
+
+    .mission-icon {
+      font-size: 1.4rem;
+      min-width: 32px;
+      filter: drop-shadow(0 0 6px var(--green));
+    }
+
+    .mission-text h4 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.75rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      margin-bottom: 4px;
+    }
+
+    .mission-text p {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Custom Lorem Ipsum Announcement Box */
+    .custom-textbox {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--green);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .custom-textbox-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.82rem;
+      color: var(--green);
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .custom-textbox-body {
+      font-size: 0.78rem;
+      color: var(--text-primary);
+      line-height: 1.8;
+    }
+    .custom-textbox-note {
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
 </head>
 <body>
   <canvas id="binary-canvas"></canvas>
@@ -26,18 +140,17 @@
 
       <nav class="sidebar-nav">
         <div class="nav-section-label">— Navigation</div>
-        <a href="index.html" class="nav-link">
+        <a href="index.html" class="nav-link active">
           <span class="nav-icon">⌂</span> Home
         </a>
         <a href="projects.html" class="nav-link">
           <span class="nav-icon">◈</span> Projects
-          <span class="nav-badge">7</span>
+          <span class="nav-badge">1</span>
         </a>
         <a href="posts.html" class="nav-link">
           <span class="nav-icon">◉</span> Blog Posts
-          <span class="nav-badge">12</span>
+          <span class="nav-badge">1</span>
         </a>
-       
 
         <div class="nav-section-label" style="margin-top:12px">— Team</div>
         <a href="about.html" class="nav-link">
@@ -76,7 +189,7 @@
     <main class="main-content">
       <!-- Hero -->
       <div class="hero-banner animate-in">
-        <div class="hero-eyebrow">// LATEST TRANSMISSION</div>
+        <div class="hero-eyebrow">// TRANSMISSION FEED</div>
         <h2>
           <span class="glitch" data-text="HACKING">HACKING</span> THE
           <span>COSMOS</span>
@@ -105,7 +218,7 @@
           <div class="terminal-line" data-typewriter="INITIALIZING VOID.LOG NODE_01..." data-delay="200"></div>
           <div class="terminal-line dim" data-typewriter="[OK] Loading project database..." data-delay="900"></div>
           <div class="terminal-line dim" data-typewriter="[OK] Syncing team profiles..." data-delay="1400"></div>
-          <div class="terminal-line" data-typewriter="[OK] 7 projects online. 12 posts indexed." data-delay="1900"></div>
+          <div class="terminal-line" data-typewriter="[OK] 1 project online. 1 post indexed." data-delay="1900"></div>
           <div class="terminal-line bright cursor-blink" data-typewriter="READY. Welcome to the void." data-delay="2500"></div>
         </div>
       </div>
@@ -113,19 +226,19 @@
       <!-- Stats -->
       <div class="stats-bar">
         <div class="stat-card">
-          <span class="stat-value" data-target="7">0</span>
+          <span class="stat-value" data-target="1">0</span>
           <span class="stat-label">Projects</span>
         </div>
         <div class="stat-card">
-          <span class="stat-value" data-target="12">0</span>
+          <span class="stat-value" data-target="1">0</span>
           <span class="stat-label">Blog Posts</span>
         </div>
         <div class="stat-card">
-          <span class="stat-value" data-target="4">0</span>
+          <span class="stat-value" data-target="5">0</span>
           <span class="stat-label">Team Members</span>
         </div>
         <div class="stat-card">
-          <span class="stat-value" data-target="3">0</span>
+          <span class="stat-value" data-target="1">0</span>
           <span class="stat-label">Active Missions</span>
         </div>
         <div class="stat-card">
@@ -134,95 +247,73 @@
         </div>
       </div>
 
-      <!-- Latest Posts -->
-      <div class="section-title">Latest Transmissions</div>
-      <div class="post-grid">
+      <!-- ══ LOREM IPSUM EDITABLE TEXT BOX ══ -->
+      <!-- EDIT HERE: Replace this text box content with your own custom announcements or introduction -->
+      <div class="section-title">Field Dispatch // Announcements</div>
+      <div class="custom-textbox animate-in">
+        <div class="custom-textbox-title">
+          <span>▶</span> // ANNOUNCEMENT / CUSTOM MESSAGE
+        </div>
+        <div class="custom-textbox-body">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+          </p>
+          <p style="margin-top:10px">
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Curabitur pretium tincidunt lacus. Nulla gravida orci a odio, et feugiat tellus sodales eget.
+          </p>
+        </div>
+        <div class="custom-textbox-note">
+          // NOTE: You can easily edit or replace this text in index.html inside the "custom-textbox" block.
+        </div>
+      </div>
 
-        <a class="post-card" href="posts.html">
-          <div class="post-card-header">
-            <div class="post-tag tag-space">SPACE</div>
-            <h3>Mapping Dark Matter with Custom ML Pipeline</h3>
+      <!-- ══ WHO WE ARE (FROM ABOUT US) ══ -->
+      <div class="section-title">Who We Are</div>
+      <div class="about-intro animate-in">
+        <div class="about-intro-text">
+          <h2>WHO WE ARE</h2>
+          <img src="pictures/group.jpg" alt="VOID.LOG Team Photo" />
+          <p>
+            We are a team of engineers, hackers, and space enthusiasts united
+            by a single drive: to push the boundaries of what's computationally
+            possible and broadcast the results into the void.
+          </p>
+          <p style="margin-top:12px">
+            From exploiting satellite protocols to building distributed ML
+            systems that map the cosmos, our work lives at the intersection of
+            computer science, astrophysics, and pure curiosity. This blog is
+            our mission log.
+          </p>
+          <div style="margin-top:18px; display:flex; gap:10px; flex-wrap:wrap">
+            <a href="projects.html" class="btn btn-primary">◈ Our Projects</a>
+            <a href="about.html" class="btn btn-outline">◌ Meet the Crew</a>
           </div>
-          <div class="post-card-body">
-            <p>We trained a neural network on gravitational lensing data to visualize unseen mass concentrations across deep-field images from the telescope array.</p>
-          </div>
-          <div class="post-card-footer">
-            <span>2026-10-22 · Ghost_Zero</span>
-            <span class="read-more">READ_MORE →</span>
-          </div>
-        </a>
+        </div>
 
-        <a class="post-card" href="posts.html">
-          <div class="post-card-header">
-            <div class="post-tag tag-hack">HACK</div>
-            <h3>Reverse Engineering a Satellite Protocol</h3>
+        <div class="about-mission-items">
+          <div class="mission-item">
+            <span class="mission-icon">🔬</span>
+            <div class="mission-text">
+              <h4>RESEARCH</h4>
+              <p>Deep technical investigations at the edges of space and systems security.</p>
+            </div>
           </div>
-          <div class="post-card-body">
-            <p>Deep-dive into SDR signal capture, BPSK demodulation, and how we eventually decoded telemetry frames from a low-Earth orbit satellite.</p>
+          <div class="mission-item">
+            <span class="mission-icon">🛰️</span>
+            <div class="mission-text">
+              <h4>SPACE TECH</h4>
+              <p>Real amateur radio, SDR, satellite interception, and orbital mechanics.</p>
+            </div>
           </div>
-          <div class="post-card-footer">
-            <span>2026-10-18 · Cipher_X</span>
-            <span class="read-more">READ_MORE →</span>
+          <div class="mission-item">
+            <span class="mission-icon">⚙️</span>
+            <div class="mission-text">
+              <h4>BUILD & HACK</h4>
+              <p>From FPGA cores to AI pipelines — we build everything from first principles.</p>
+            </div>
           </div>
-        </a>
-
-        <a class="post-card" href="posts.html">
-          <div class="post-card-header">
-            <div class="post-tag tag-project">PROJECT</div>
-            <h3>Project NEBULA — Phase 1 Complete</h3>
-          </div>
-          <div class="post-card-body">
-            <p>Full writeup on the completion of our distributed sensor mesh for atmospheric monitoring. Three months, two hardware revisions, countless late nights.</p>
-          </div>
-          <div class="post-card-footer">
-            <span>2026-10-10 · Orion_77</span>
-            <span class="read-more">READ_MORE →</span>
-          </div>
-        </a>
-
-        <a class="post-card" href="posts.html">
-          <div class="post-card-header">
-            <div class="post-tag tag-research">RESEARCH</div>
-            <h3>Zero-Day in Space Telemetry Systems</h3>
-          </div>
-          <div class="post-card-body">
-            <p>Responsible disclosure writeup on vulnerabilities we found in commercial telemetry ground station software. Patched. Story can finally be told.</p>
-          </div>
-          <div class="post-card-footer">
-            <span>2026-09-30 · Nova_R3D</span>
-            <span class="read-more">READ_MORE →</span>
-          </div>
-        </a>
-
-        <a class="post-card" href="posts.html">
-          <div class="post-card-header">
-            <div class="post-tag tag-hack">HACK</div>
-            <h3>Building a RISC-V CPU from Scratch in FPGA</h3>
-          </div>
-          <div class="post-card-body">
-            <p>How we implemented a minimal 32-bit RISC-V core in VHDL, ran it on a Xilinx board, and booted a tiny embedded OS on it.</p>
-          </div>
-          <div class="post-card-footer">
-            <span>2026-09-14 · Ghost_Zero</span>
-            <span class="read-more">READ_MORE →</span>
-          </div>
-        </a>
-
-        <a class="post-card" href="posts.html">
-          <div class="post-card-header">
-            <div class="post-tag tag-space">SPACE</div>
-            <h3>Our First Contact with Amateur Deep Space Net</h3>
-          </div>
-          <div class="post-card-body">
-            <p>Joining the amateur deep space network and receiving our first genuine signal bounce from beyond the Moon. What we heard and how we did it.</p>
-          </div>
-          <div class="post-card-footer">
-            <span>2026-08-28 · Orion_77</span>
-            <span class="read-more">READ_MORE →</span>
-          </div>
-        </a>
-
-      </div><!-- /post-grid -->
+        </div>
+      </div>
 
     </main>
   </div>
