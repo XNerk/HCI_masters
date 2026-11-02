@@ -1,3 +1,6 @@
-# HCI_bros
+# NSA — National Security Agents😎
 
-edit posts.html to add or change posts
+Official hub for project documentation, team profiles, and operational dispatches.
+
+- Edit `posts.html` to add or update posts.
+- Edit `projects.html` to add or update missions.
